@@ -20,7 +20,7 @@
     --good-text: #006300;
     --bad-text: #b02a2a;
     --chip-bg: rgba(42,120,214,0.08);
-    --sam: #2a78d6; --hyn: #eb6834; --mu: #1baf7a; --kio: #4a3aa7; --asml: #eda100; --sndk: #e87ba4; --nvda: #008300;
+    --sam: #2a78d6; --hyn: #eb6834; --mu: #1baf7a; --kio: #4a3aa7; --asml: #eda100; --sndk: #e87ba4; --nvda: #008300; --tsmc: #e34948;
   }
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
@@ -43,7 +43,7 @@
       --good-text: #0ca30c;
       --bad-text: #e66767;
       --chip-bg: rgba(57,135,229,0.14);
-      --sam: #3987e5; --hyn: #d95926; --mu: #199e70; --kio: #9085e9; --asml: #c98500; --sndk: #d55181; --nvda: #0ca30c;
+      --sam: #3987e5; --hyn: #d95926; --mu: #199e70; --kio: #9085e9; --asml: #c98500; --sndk: #d55181; --nvda: #0ca30c; --tsmc: #e66767;
     }
   }
   :root[data-theme="dark"] {
@@ -661,9 +661,9 @@
   <h2>주가 스코어보드 — 연초 = 100</h2>
   <p class="sub">같은 기간 반도체는 차원이 다른 상승. 다만 7월 급락으로 <strong>고점 대비 30~50% 되돌림</strong>이 있었다는 점이 더 중요하다.</p>
   <figure>
-    <figcaption>반도체 7사 주가 (2025년 말 = 100, 월말 종가 · <b>로그 눈금</b>)</figcaption>
-    <p class="figsub">상승폭 차이가 워낙 커서 로그 눈금 사용 — 같은 기울기 = 같은 상승률. 메모리(샌디스크·키옥시아·마이크론·하이닉스·삼성)와 비메모리(엔비디아·ASML)의 궤적이 완전히 갈렸다.</p>
-    <svg viewBox="0 0 720 322" style="width:100%;height:auto" role="img" aria-label="반도체 7사 연초 대비 지수화 주가 라인 차트 (로그 눈금)">
+    <figcaption>반도체 8사 주가 (2025년 말 = 100, 월말 종가 · <b>로그 눈금</b>)</figcaption>
+    <p class="figsub">상승폭 차이가 워낙 커서 로그 눈금 사용 — 같은 기울기 = 같은 상승률. 메모리(샌디스크·키옥시아·마이크론·하이닉스·삼성)와 비메모리(TSMC·엔비디아·ASML)의 궤적이 완전히 갈렸다. TSMC는 대만 본토 상장(2330.TW) 기준.</p>
+    <svg viewBox="0 0 720 322" style="width:100%;height:auto" role="img" aria-label="반도체 8사 연초 대비 지수화 주가 라인 차트 (로그 눈금)">
       <g stroke="var(--grid)" stroke-width="1">
         <line x1="40" y1="40" x2="610" y2="40"/><line x1="40" y1="61.1" x2="610" y2="61.1"/><line x1="40" y1="126.8" x2="610" y2="126.8"/><line x1="40" y1="192.4" x2="610" y2="192.4"/><line x1="40" y1="258" x2="610" y2="258" stroke="var(--baseline)" stroke-dasharray="4 3"/>
       </g>
@@ -679,6 +679,7 @@
       <polyline points="40,258 121,227 203,212 284,238 366,194 447,137 529,125 610,166" fill="none" stroke="var(--hyn)" stroke-width="2.5" stroke-linejoin="round"/>
       <polyline points="40,258 121,230 203,202 284,227 366,200 447,166 529,161 610,184" fill="none" stroke="var(--sam)" stroke-width="2.5" stroke-linejoin="round"/>
       <polyline points="40,258 121,231 203,229 284,238 366,230 447,219 529,199 610,218" fill="none" stroke="var(--asml)" stroke-width="2.5" stroke-linejoin="round"/>
+      <polyline points="40,258 121,245 203,234 284,246 366,228 447,219 529,216 610,216" fill="none" stroke="var(--tsmc)" stroke-width="2.5" stroke-linejoin="round"/>
       <polyline points="40,258 121,256 203,263 284,264 366,252 447,246 529,251 610,251" fill="none" stroke="var(--nvda)" stroke-width="2.5" stroke-linejoin="round"/>
       <g>
         <circle cx="529" cy="44" r="4" fill="var(--sndk)"><title>샌디스크 6월 말 958 — 전 종목 최고점 (YTD +858%)</title></circle>
@@ -687,6 +688,7 @@
         <circle cx="610" cy="158" r="4" fill="var(--mu)"><title>마이크론 7월 말 288 (YTD +188%)</title></circle>
         <circle cx="610" cy="166" r="4" fill="var(--hyn)"><title>SK하이닉스 7월 말 264 (YTD +164%) — 6월 고점 407 대비 -35%</title></circle>
         <circle cx="610" cy="184" r="4" fill="var(--sam)"><title>삼성전자 7월 말 219 (YTD +119%)</title></circle>
+        <circle cx="610" cy="216" r="4" fill="var(--tsmc)"><title>TSMC 7월 말 157 (YTD +56.5%) — 7월 조정을 피한 유이한 종목</title></circle>
         <circle cx="610" cy="218" r="4" fill="var(--asml)"><title>ASML 7월 말 152 (YTD +52%)</title></circle>
         <circle cx="610" cy="251" r="4" fill="var(--nvda)"><title>엔비디아 7월 말 108 (YTD +7.6%) — 매출 +85% 성장에도 주가는 제자리</title></circle>
       </g>
@@ -696,7 +698,8 @@
         <text x="618" y="156" fill="var(--mu)">마이크론 288</text>
         <text x="618" y="172" fill="var(--hyn)">하이닉스 264</text>
         <text x="618" y="188" fill="var(--sam)">삼성 219</text>
-        <text x="618" y="222" fill="var(--asml)">ASML 152</text>
+        <text x="618" y="209" fill="var(--tsmc)">TSMC 157</text>
+        <text x="618" y="226" fill="var(--asml)">ASML 152</text>
         <text x="618" y="255" fill="var(--nvda)">엔비디아 108</text>
       </g>
     </svg>
@@ -710,19 +713,20 @@
       <tr><td class="co"><span class="dot" style="background:var(--mu)"></span>마이크론</td><td class="num">$823.03</td><td class="num">$929.5B <span class="note">(₩1,324조)</span></td><td class="num">288.4</td><td class="num pos">+188.4%</td><td class="num neg">-29%</td></tr>
       <tr><td class="co"><span class="dot" style="background:var(--hyn)"></span>SK하이닉스</td><td class="num">₩1,718,000</td><td class="num">₩1,255조 <span class="note">($881B)</span></td><td class="num">263.9</td><td class="num pos">+163.9%</td><td class="num neg">-35%</td></tr>
       <tr><td class="co"><span class="dot" style="background:var(--sam)"></span>삼성전자</td><td class="num">₩262,500</td><td class="num">₩1,511조 <span class="note">($1.06T)</span></td><td class="num">218.9</td><td class="num pos">+118.9%</td><td class="num neg">-21%</td></tr>
+      <tr><td class="co"><span class="dot" style="background:var(--tsmc)"></span>TSMC <span class="note">(대만)</span></td><td class="num">NT$2,425</td><td class="num">$1.95T <span class="note">(₩2,777조)</span></td><td class="num">156.5</td><td class="num pos">+56.5%</td><td class="num pos">+1%</td></tr>
       <tr><td class="co"><span class="dot" style="background:var(--asml)"></span>ASML</td><td class="num">$1,629.00</td><td class="num">$633.6B <span class="note">(₩902조)</span></td><td class="num">152.3</td><td class="num pos">+52.3%</td><td class="num neg">-18%</td></tr>
       <tr><td class="co"><span class="dot" style="background:var(--nvda)"></span>엔비디아</td><td class="num">$200.75</td><td class="num">$4.86T <span class="note">(₩6,921조)</span></td><td class="num">107.6</td><td class="num pos">+7.6%</td><td class="num">+0%</td></tr>
     </tbody>
   </table></div>
-  <p class="note">삼성전자 시총은 보통주 기준(우선주 포함 시 ₩1,669조). 원화 환산은 USD/KRW 1,424원, JPY/KRW 9.05원(7월 31일 서울 외환시장 종가) 적용. 참고로 <b>엔비디아 한 종목($4.86T)이 나머지 6개 반도체 종목 합산보다 크다</b>.</p>
+  <p class="note">삼성전자 시총은 보통주 기준(우선주 포함 시 ₩1,669조). TSMC는 대만 본토 상장(2330.TW) 기준이며 시총도 본토 주식수×본토 주가로 산출 — <b>미국 ADR(TSM)로 계산하면 $2.10T로 부풀려진다</b>(7월 말 ADR 프리미엄 7.7%). 원화 환산은 USD/KRW 1,424원, JPY/KRW 9.05원, TWD/USD 32.295(7월 31일 종가) 적용. 참고로 <b>엔비디아($4.86T)와 TSMC($1.95T) 두 종목이 8개 종목 합산 시총의 약 64%</b>를 차지한다.</p>
 
   <div class="tiles" style="margin-top:14px">
     <div class="tile"><div class="k">YTD 1위 · 샌디스크</div><div class="v">+412%</div><div class="d">6월 고점은 +858% → 7월 -47% 되돌림</div></div>
     <div class="tile"><div class="k">메모리 5사 평균</div><div class="v">+246%</div><div class="d">샌디스크·키옥시아·마이크론·하이닉스·삼성</div></div>
     <div class="tile"><div class="k">엔비디아</div><div class="v">+7.6%</div><div class="d">매출 <span class="pos">+85%</span> 성장에도 주가는 제자리</div></div>
-    <div class="tile"><div class="k">ASML (장비)</div><div class="v">+52%</div><div class="d">진폭 작은 자산 — 사이클 지속기간에 베팅</div></div>
+    <div class="tile"><div class="k">TSMC (파운드리)</div><div class="v">+56.5%</div><div class="d">7월 조정을 <b>피한</b> 유일한 상승 종목</div></div>
   </div>
-  <p class="note" style="margin-top:10px">읽는 포인트: ① <b>메모리 5사의 궤적이 거의 겹친다</b> — 개별 실적이 아니라 하나의 사이클 베팅으로 움직였다는 증거. ② 7월 조정폭이 <b>많이 오른 순서대로</b> 컸다(샌디스크 -47%, 키옥시아 -48% &gt; 하이닉스 -35% &gt; 삼성 -21% &gt; ASML -18%) — 실적 차이가 아니라 포지션 쏠림의 청산. ③ <b>엔비디아의 소외가 올해 가장 흥미로운 대목</b>: 분기 매출 $81.6B(+85% YoY), 영업이익률 65.6%인데 주가는 +7.6%. 시장은 이미 엔비디아의 성장을 가격에 반영해뒀고, 올해의 초과수익은 <b>공급이 부족한 메모리</b>에서 나왔다. AI 칩 수요의 병목이 GPU에서 HBM·NAND로 이동했다는 것이 주가로 표현된 셈. ④ 그 결과 <b>ASIC 비중 확대</b>(GPU 69.7%, ASIC 27.8%)가 엔비디아엔 점유율 리스크로, 메모리엔 추가 수요로 작용하는 구도가 강화됐다.</p>
+  <p class="note" style="margin-top:10px">읽는 포인트: ① <b>메모리 5사의 궤적이 거의 겹친다</b> — 개별 실적이 아니라 하나의 사이클 베팅으로 움직였다는 증거. ② 7월 조정폭이 <b>많이 오른 순서대로</b> 컸다(샌디스크 -47%, 키옥시아 -48% &gt; 하이닉스 -35% &gt; 삼성 -21% &gt; ASML -18%) — 실적 차이가 아니라 포지션 쏠림의 청산. ③ <b>7월 조정을 피한 종목이 답을 준다</b>: TSMC(+1%)와 엔비디아(0%)만 6월 고점을 지켰다. 즉 7월 급락은 "AI 사이클이 꺾였다"가 아니라 <b>메모리에 쏠린 포지션의 청산</b>이었다. 사이클 자체가 의심받았다면 파운드리·GPU도 함께 무너졌어야 한다. ④ <b>엔비디아의 소외가 올해 가장 흥미로운 대목</b>: 분기 매출 $81.6B(+85% YoY), 영업이익률 65.6%인데 주가는 +7.6%. 시장은 이미 엔비디아의 성장을 가격에 반영해뒀고, 올해의 초과수익은 <b>공급이 부족한 메모리</b>에서 나왔다. AI 칩 수요의 병목이 GPU에서 HBM·NAND로 이동했다는 것이 주가로 표현된 셈. ⑤ 그 결과 <b>ASIC 비중 확대</b>(GPU 69.7%, ASIC 27.8%)가 엔비디아엔 점유율 리스크로, 메모리엔 추가 수요로 작용하는 구도가 강화됐다.</p>
 
   <div class="callout"><strong>두 차트를 겹쳐 보면.</strong> 같은 7개월 동안 메모리 반도체는 +119~412%, 빅테크는 -16~+18%였다(엔비디아는 예외적으로 +7.6%). 빅테크가 <b>돈을 쓰는 쪽</b>, 반도체가 <b>돈을 받는 쪽</b>이라는 구조가 주가에 그대로 반영된 결과다. 다만 7월에 드러났듯 이 관계는 일방적이다 — 받는 쪽(반도체)의 주가는 쓰는 쪽(빅테크)이 계속 쓸 것이라는 <em>믿음</em>에 의존하므로, 빅테크 어닝콜 한 번에 30% 되돌림이 나올 수 있다. 높은 수익률의 대가로 높은 변동성을 산 셈.</div>
 </section>
@@ -945,6 +949,7 @@
     <li>키옥시아 연간 영업이익은 GAAP/non-GAAP 기준이 출처별 혼재(FY25 ¥870~876B). HBM 점유율(62/21/17)은 단일 기관의 분기 추정으로 기관별 편차 큼. HBM 2027년 시장규모는 공식 전망 부재로 성장률 역산치.</li>
     <li>샌디스크는 6월 분기(FY26 4분기) 실적을 8월 5일 발표 예정이라, 표의 수치는 직전 분기(2~4월) 기준. 엔비디아도 2~4월 분기가 최신이며 다음 실적은 8월 26일. 엔비디아는 FY27부터 비GAAP에서 주식보상비를 제외하지 않도록 기준을 변경했고 게이밍·비주얼 부문을 별도 공시하지 않으므로 과거 수치와 직접 비교 시 주의. 샌디스크 FY2024~25 실적은 웨스턴디지털 분할 전 카브아웃 재무제표이며 FY25 적자에는 영업권 손상 $1.83B가 포함됨.</li>
     <li>시총은 2026년 7월 31일 종가 기준이며 환율은 서울 외환시장 종가(USD/KRW 1,424원, JPY/KRW 9.05원) 적용 — 글로벌 종가 환율(1,443원) 사용 시 원화 환산액이 약 1.3% 커짐. 삼성전자는 보통주 기준이 KRX 공식 시가총액이나 해외 집계기관은 우선주 포함(₩1,669조)을 쓰는 경우가 많아 출처 간 차이가 발생함.</li>
+    <li>TSMC 주가는 <b>대만 본토 상장(2330.TW)</b> 기준 — 미국 ADR(TSM)은 7월 한 달 -15.4%인 반면 본토는 +0.6%로, ADR 프리미엄이 23%→7.7%로 축소된 효과가 섞여 실적과 무관하게 왜곡된다(환율 요인 아님). 다른 종목도 모두 본토 상장 기준이며 ASML만 나스닥 ADR(본토와 괴리 미미). 2월 말 대만 증시 휴장으로 TSMC 2월 값은 2월 26일 종가.</li>
     <li>주가 스코어보드는 월말 종가 기준(2025년 12월 30/31일 = 100). 미국 종목은 stockanalysis.com, 한국·일본 종목은 Yahoo Finance 일별 시세를 사용했고 7월 주요 등락일(MSFT +15.5%, 하이닉스 -15.4%·+30%, 키옥시아 +17.7% 등)과 대조해 검증함. 배당 미반영 순수 주가 기준이며, 한국·일본은 12월 31일이 휴장이라 12월 30일 종가를 기준값으로 사용. 삼성전자 실적일 하락폭은 언론 인용(-6.9%)과 시세 데이터(7/29 -5.2%, 7/30 -0.7%)에 차이가 있음.</li>
     <li>수급 전망(DRAM -1~2%, NAND -4~5%, 2027 방향)은 트렌드포스 2026년 7월 자료 기준 — 전망치 특성상 분기마다 수정됨.</li>
   </ul>

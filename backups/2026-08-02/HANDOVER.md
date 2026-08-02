@@ -58,12 +58,8 @@ big4 review/
 ├─ big4-semis-q2-2026-review.pdf     ← 인쇄본 (Edge headless로 생성)
 ├─ HANDOVER.md                       ← 이 문서
 ├─ .gitignore                        ← .vercel, .env* 제외
-└─ backups/
-   ├─ 2026-08-02/                    ← 날짜별 스냅샷 (html·pdf·handover)
-   └─ big4-review-backup-2026-08-02.zip
+└─ .vercel/                          ← 구 프로젝트 링크 정보 (삭제된 프로젝트 참조 → 무시/삭제 가능)
 ```
-
-**백업 정책**: 주요 변경 후 `backups/YYYY-MM-DD/` 폴더와 동명 zip을 생성. 폴더 자체가 OneDrive 동기화 대상이고 GitHub에도 푸시되므로 3중(로컬·OneDrive·GitHub) 보관됨. 릴리스 시점은 git 태그로도 표시(`git tag -l`).
 
 **중요**: HTML을 수정하면 `index.html`에도 반드시 복사해야 배포에 반영됩니다(5-1 참조).
 
