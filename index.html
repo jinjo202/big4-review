@@ -20,6 +20,7 @@
     --good-text: #006300;
     --bad-text: #b02a2a;
     --chip-bg: rgba(42,120,214,0.08);
+    --sam: #2a78d6; --hyn: #eb6834; --mu: #1baf7a; --kio: #4a3aa7; --asml: #eda100;
   }
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
@@ -42,6 +43,7 @@
       --good-text: #0ca30c;
       --bad-text: #e66767;
       --chip-bg: rgba(57,135,229,0.14);
+      --sam: #3987e5; --hyn: #d95926; --mu: #199e70; --kio: #9085e9; --asml: #c98500;
     }
   }
   :root[data-theme="dark"] {
@@ -267,6 +269,7 @@
     <div class="tile"><div class="k">4사 2026년 CapEx 계획</div><div class="v">~$733B</div><div class="d">전년 $409B 대비 <span class="pos">+79%</span> · 2027 전망 $1.0~1.2조 달러</div></div>
     <div class="tile"><div class="k">클라우드 3사 성장률</div><div class="v">전부 가속</div><div class="d">AWS 28→37% · Azure 40→43% · GCP 63→82%</div></div>
     <div class="tile"><div class="k">주가 반응 스프레드</div><div class="v">±15%p</div><div class="d">MSFT·AMZN +15% vs GOOGL -7%·META ≈-9%</div></div>
+    <div class="tile"><div class="k">YTD 주가 (연초=100)</div><div class="v">반도체 압승</div><div class="d">반도체 +52~346% vs 빅테크 -16~+18%</div></div>
   </div>
   <div class="callout">
     <strong>3줄 요약.</strong> ① 4사 모두 CapEx를 분기당 $30~54B까지 늘리며 FCF가 급감(알파벳·아마존은 사상 첫 마이너스)했지만, 클라우드 매출은 3사 모두 <em>가속</em>하며 AI 수요가 실체임을 증명했다. ② 그런데 주가는 극단적으로 갈렸다 — 수요 증거(가속하는 클라우드, 수주잔고, AI 런레이트)를 제시한 MSFT·아마존은 +15%, 증거 없이 지출 계획만 키운 알파벳·메타는 -7~-9%. ③ 반도체는 사상 최대 실적에도 "빅테크가 계속 쓸 수 있냐"는 의심에 급락했다가, 빅테크 호실적 확인 후 사상 최대 반등(KOSPI 7/31 +18%) — <strong>반도체 주가의 열쇠를 빅테크 어닝콜이 쥐는 구조</strong>가 굳어졌다.
@@ -290,6 +293,45 @@
 
 <div class="tabpanel active" id="panel-bigtech">
 <p class="print-only">PART 1 — 빅테크</p>
+
+<section>
+  <h2>주가 스코어보드 — 연초 = 100</h2>
+  <p class="sub">2025년 말 종가를 100으로 환산한 월말 종가 추이. 빅테크는 지수 기준으로 <strong>올해 거의 못 오른 해</strong>다 — 주도권이 반도체에 있었다는 뜻.</p>
+  <figure>
+    <figcaption>빅테크 4사 주가 (2025년 말 = 100, 월말 종가)</figcaption>
+    <p class="figsub">7월 말 기준: 아마존 117.7 · 알파벳 113.8 · MSFT 96.1 · 메타 84.3 — MSFT와 메타는 YTD 마이너스.</p>
+    <svg viewBox="0 0 720 320" style="width:100%;height:auto" role="img" aria-label="빅테크 4사 연초 대비 지수화 주가 라인 차트">
+      <g stroke="var(--grid)" stroke-width="1">
+        <line x1="40" y1="43.6" x2="640" y2="43.6"/><line x1="40" y1="90.9" x2="640" y2="90.9"/><line x1="40" y1="138.2" x2="640" y2="138.2" stroke="var(--baseline)" stroke-dasharray="4 3"/><line x1="40" y1="185.4" x2="640" y2="185.4"/><line x1="40" y1="232.7" x2="640" y2="232.7"/>
+      </g>
+      <g fill="var(--muted)" font-size="10" text-anchor="end">
+        <text x="36" y="47">120</text><text x="36" y="94">110</text><text x="36" y="141">100</text><text x="36" y="189">90</text><text x="36" y="236">80</text>
+      </g>
+      <g fill="var(--muted)" font-size="10" text-anchor="middle">
+        <text x="40" y="305">'25말</text><text x="124" y="305">1월</text><text x="209" y="305">2월</text><text x="293" y="305">3월</text><text x="377" y="305">4월</text><text x="461" y="305">5월</text><text x="546" y="305">6월</text><text x="630" y="305">7월</text>
+      </g>
+      <polyline points="40,138 124,121 209,181 293,184 377,68 461,57 546,123 630,55" fill="none" stroke="var(--amzn)" stroke-width="2.5" stroke-linejoin="round"/>
+      <polyline points="40,138 124,100 209,140 293,177 377,30 461,37 546,71 630,73" fill="none" stroke="var(--googl)" stroke-width="2.5" stroke-linejoin="round"/>
+      <polyline points="40,138 124,190 209,227 293,249 377,212 461,171 546,246 630,157" fill="none" stroke="var(--msft)" stroke-width="2.5" stroke-linejoin="round"/>
+      <polyline points="40,138 124,98 209,147 293,201 377,173 461,158 546,208 630,212" fill="none" stroke="var(--meta)" stroke-width="2.5" stroke-linejoin="round"/>
+      <g>
+        <circle cx="630" cy="55" r="4" fill="var(--amzn)"><title>아마존 7월 말 117.7 (YTD +17.7%)</title></circle>
+        <circle cx="630" cy="73" r="4" fill="var(--googl)"><title>알파벳 7월 말 113.8 (YTD +13.8%)</title></circle>
+        <circle cx="630" cy="157" r="4" fill="var(--msft)"><title>MSFT 7월 말 96.1 (YTD -3.9%)</title></circle>
+        <circle cx="630" cy="212" r="4" fill="var(--meta)"><title>메타 7월 말 84.3 (YTD -15.7%)</title></circle>
+        <circle cx="377" cy="30" r="3.5" fill="var(--googl)"><title>알파벳 4월 말 122.9 — 1Q 실적 랠리</title></circle>
+        <circle cx="293" cy="249" r="3.5" fill="var(--msft)"><title>MSFT 3월 말 76.5 — 연중 저점, AI 지출 우려</title></circle>
+      </g>
+      <g font-size="11.5" font-weight="700">
+        <text x="644" y="59" fill="var(--amzn)">아마존 118</text>
+        <text x="644" y="79" fill="var(--googl)">알파벳 114</text>
+        <text x="644" y="161" fill="var(--msft)">MSFT 96</text>
+        <text x="644" y="216" fill="var(--meta)">메타 84</text>
+      </g>
+    </svg>
+    <p class="note" style="margin-top:8px">읽는 포인트: ① 4사 모두 3월에 연중 저점(MSFT 76.5까지) — "AI 지출 우려"가 상반기 내내 빅테크를 눌렀다. ② 7월 실적 주간에 아마존·MSFT만 수직 반등 — 실적이 갈라놓은 궤적. ③ MSFT는 사상 최대 시총 증가일(+15.5%)을 겪고도 YTD -3.9% — 랠리가 아니라 <b>회복</b>이었다. 메타는 84.3으로 4사 중 최하위.</p>
+  </figure>
+</section>
 
 <!-- ================= 1. CapEx ================= -->
 <section>
@@ -602,6 +644,55 @@
 
 <div class="tabpanel" id="panel-semis">
 <p class="print-only">PART 2 — 반도체 · 시장 전망</p>
+
+<section>
+  <h2>주가 스코어보드 — 연초 = 100</h2>
+  <p class="sub">같은 기간 반도체는 차원이 다른 상승. 다만 7월 급락으로 <strong>고점 대비 30~50% 되돌림</strong>이 있었다는 점이 더 중요하다.</p>
+  <figure>
+    <figcaption>반도체 5사 주가 (2025년 말 = 100, 월말 종가 · <b>로그 눈금</b>)</figcaption>
+    <p class="figsub">상승폭 차이가 워낙 커서 로그 눈금 사용 — 같은 기울기 = 같은 상승률. 7월 말 기준 키옥시아 446 · 마이크론 288 · 하이닉스 264 · 삼성 219 · ASML 152.</p>
+    <svg viewBox="0 0 720 320" style="width:100%;height:auto" role="img" aria-label="반도체 5사 연초 대비 지수화 주가 라인 차트 (로그 눈금)">
+      <g stroke="var(--grid)" stroke-width="1">
+        <line x1="40" y1="51.8" x2="628" y2="51.8"/><line x1="40" y1="121.2" x2="628" y2="121.2"/><line x1="40" y1="190.6" x2="628" y2="190.6"/><line x1="40" y1="260" x2="628" y2="260" stroke="var(--baseline)" stroke-dasharray="4 3"/>
+      </g>
+      <g fill="var(--muted)" font-size="10" text-anchor="end">
+        <text x="36" y="55">800</text><text x="36" y="125">400</text><text x="36" y="194">200</text><text x="36" y="264">100</text>
+      </g>
+      <g fill="var(--muted)" font-size="10" text-anchor="middle">
+        <text x="40" y="305">'25말</text><text x="124" y="305">1월</text><text x="209" y="305">2월</text><text x="293" y="305">3월</text><text x="377" y="305">4월</text><text x="461" y="305">5월</text><text x="546" y="305">6월</text><text x="628" y="305">7월</text>
+      </g>
+      <polyline points="40,260 124,188 209,189 293,200 377,132 461,75 546,44 628,110" fill="none" stroke="var(--kio)" stroke-width="2.5" stroke-linejoin="round"/>
+      <polyline points="40,260 124,223 209,223 293,243 377,201 461,137 546,120 628,154" fill="none" stroke="var(--mu)" stroke-width="2.5" stroke-linejoin="round"/>
+      <polyline points="40,260 124,227 209,211 293,239 377,192 461,132 546,119 628,163" fill="none" stroke="var(--hyn)" stroke-width="2.5" stroke-linejoin="round"/>
+      <polyline points="40,260 124,231 209,201 293,227 377,199 461,163 546,157 628,182" fill="none" stroke="var(--sam)" stroke-width="2.5" stroke-linejoin="round"/>
+      <polyline points="40,260 124,229 209,228 293,239 377,228 461,217 546,198 628,216" fill="none" stroke="var(--asml)" stroke-width="2.5" stroke-linejoin="round"/>
+      <g>
+        <circle cx="546" cy="44" r="4" fill="var(--kio)"><title>키옥시아 6월 말 859 — 연중 고점 (YTD +759%)</title></circle>
+        <circle cx="628" cy="110" r="4" fill="var(--kio)"><title>키옥시아 7월 말 446 (YTD +346%) — 고점 대비 -48%</title></circle>
+        <circle cx="628" cy="154" r="4" fill="var(--mu)"><title>마이크론 7월 말 288 (YTD +188%)</title></circle>
+        <circle cx="628" cy="163" r="4" fill="var(--hyn)"><title>SK하이닉스 7월 말 264 (YTD +164%) — 6월 고점 407 대비 -35%</title></circle>
+        <circle cx="628" cy="182" r="4" fill="var(--sam)"><title>삼성전자 7월 말 219 (YTD +119%)</title></circle>
+        <circle cx="628" cy="216" r="4" fill="var(--asml)"><title>ASML 7월 말 152 (YTD +52%)</title></circle>
+      </g>
+      <g font-size="11.5" font-weight="700">
+        <text x="642" y="114" fill="var(--kio)">키옥시아 446</text>
+        <text x="642" y="152" fill="var(--mu)">마이크론 288</text>
+        <text x="642" y="169" fill="var(--hyn)">하이닉스 264</text>
+        <text x="642" y="186" fill="var(--sam)">삼성 219</text>
+        <text x="642" y="220" fill="var(--asml)">ASML 152</text>
+      </g>
+    </svg>
+    <div class="tiles" style="margin-top:14px">
+      <div class="tile"><div class="k">YTD 최고 · 키옥시아</div><div class="v">+346%</div><div class="d">6월 고점 +759% → 7월 -48% 되돌림</div></div>
+      <div class="tile"><div class="k">SK하이닉스</div><div class="v">+164%</div><div class="d">6월 고점 대비 <span class="neg">-35%</span></div></div>
+      <div class="tile"><div class="k">삼성전자</div><div class="v">+119%</div><div class="d">6월 고점 대비 <span class="neg">-21%</span></div></div>
+      <div class="tile"><div class="k">ASML (장비)</div><div class="v">+52%</div><div class="d">메모리 대비 완만 — 진폭 작은 자산</div></div>
+    </div>
+    <p class="note" style="margin-top:10px">읽는 포인트: ① 5개 종목의 궤적이 <b>거의 겹친다</b> — 개별 실적이 아니라 하나의 사이클 베팅으로 움직였다는 증거. ② 7월 조정폭이 종목별로 갈렸다(키옥시아 -48% &gt; 하이닉스 -35% &gt; 삼성 -21% &gt; ASML): <b>많이 오른 순서대로 많이 빠졌다</b> — 실적 차이가 아니라 포지션 쏠림의 청산. ③ ASML의 완만한 기울기는 장비주가 사이클의 진폭이 아닌 지속기간에 베팅하는 자산임을 보여준다.</p>
+  </figure>
+
+  <div class="callout"><strong>두 차트를 겹쳐 보면.</strong> 같은 7개월 동안 반도체는 +52~346%, 빅테크는 -16~+18%였다. 빅테크가 <b>돈을 쓰는 쪽</b>, 반도체가 <b>돈을 받는 쪽</b>이라는 구조가 주가에 그대로 반영된 결과다. 다만 7월에 드러났듯 이 관계는 일방적이다 — 받는 쪽(반도체)의 주가는 쓰는 쪽(빅테크)이 계속 쓸 것이라는 <em>믿음</em>에 의존하므로, 빅테크 어닝콜 한 번에 30% 되돌림이 나올 수 있다. 높은 수익률의 대가로 높은 변동성을 산 셈.</div>
+</section>
 <!-- ================= 8. 반도체 ================= -->
 <section>
   <h2><span class="no">8</span>반도체 실적 — 슈퍼사이클의 숫자들</h2>
@@ -794,6 +885,7 @@
     <li>ASML은 2026년 1분기부터 분기 수주(북킹) 공시를 중단해 EUV 수주액은 시스템 매출로 대체 인용.</li>
     <li>연간 CapEx 시계열(2023~2025)은 Epoch AI 집계(리스 포함, SEC 공시 기반)를 사용 — 현금 기준 집계와 2024년에 최대 $22B 차이. 2026E는 가이던스 중간값 합산, 2027E는 블룸버그 집계 컨센서스(회사별 추정치는 회계연도 혼재로 참고용).</li>
     <li>키옥시아 연간 영업이익은 GAAP/non-GAAP 기준이 출처별 혼재(FY25 ¥870~876B). HBM 점유율(62/21/17)은 단일 기관의 분기 추정으로 기관별 편차 큼. HBM 2027년 시장규모는 공식 전망 부재로 성장률 역산치.</li>
+    <li>주가 스코어보드는 월말 종가 기준(2025년 12월 30/31일 = 100). 미국 종목은 stockanalysis.com, 한국·일본 종목은 Yahoo Finance 일별 시세를 사용했고 7월 주요 등락일(MSFT +15.5%, 하이닉스 -15.4%·+30%, 키옥시아 +17.7% 등)과 대조해 검증함. 배당 미반영 순수 주가 기준이며, 한국·일본은 12월 31일이 휴장이라 12월 30일 종가를 기준값으로 사용. 삼성전자 실적일 하락폭은 언론 인용(-6.9%)과 시세 데이터(7/29 -5.2%, 7/30 -0.7%)에 차이가 있음.</li>
     <li>수급 전망(DRAM -1~2%, NAND -4~5%, 2027 방향)은 트렌드포스 2026년 7월 자료 기준 — 전망치 특성상 분기마다 수정됨.</li>
   </ul>
 </section>
