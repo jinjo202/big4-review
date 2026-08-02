@@ -26,6 +26,10 @@
 | 아티팩트(웹 발행본) | https://claude.ai/code/artifact/ea0e24cf-9600-4aaa-ae0b-109035b1c944 | ✅ v3 발행 — ⚠️ 이 계정 소유, 아래 참고 |
 | PDF | `big4-semis-q2-2026-review.pdf` (이 폴더) | ✅ 생성 완료 (Edge headless 인쇄) |
 | GitHub | https://github.com/jinjo202/big4-review (private) | ✅ 푸시 완료 — 다른 계정 접근 시 collaborator 추가 또는 public 전환 필요 |
+| Vercel 배포 | https://big4-review.vercel.app | ✅ 배포 완료 (Vercel 계정: devbotsender8282-3212, CLI 직접 배포 — GitHub 연동 아님) |
+
+**Vercel 재배포 방법**: 이 폴더에서 `vercel deploy --prod --yes` (index.html이 진입점, `big4-semis-q2-2026-review.html` 수정 후 `Copy-Item`으로 index.html 갱신 필요).
+**Vercel 비공개 설정**: 기본값은 URL 공개 상태. 대시보드 → big4-review → Settings → Deployment Protection → **Vercel Authentication → All Deployments** 활성화 시 이 Vercel 계정 로그인자만 열람 가능(무료). 단, 다른 사람/계정과 공유하려면 팀 멤버 추가 필요(Hobby 플랜 제약) — Password Protection은 유료 기능.
 
 **⚠️ 아티팩트 주의**: 위 URL은 원 계정 소유라 다른 계정에서는 같은 URL로 업데이트 불가.
 새 계정에서는 이 폴더의 HTML 파일을 Artifact 도구로 발행하면 새 URL이 생성됨.
