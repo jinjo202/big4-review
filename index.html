@@ -20,7 +20,7 @@
     --good-text: #006300;
     --bad-text: #b02a2a;
     --chip-bg: rgba(42,120,214,0.08);
-    --sam: #2a78d6; --hyn: #eb6834; --mu: #1baf7a; --kio: #4a3aa7; --asml: #eda100;
+    --sam: #2a78d6; --hyn: #eb6834; --mu: #1baf7a; --kio: #4a3aa7; --asml: #eda100; --sndk: #e87ba4; --nvda: #008300;
   }
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
@@ -43,7 +43,7 @@
       --good-text: #0ca30c;
       --bad-text: #e66767;
       --chip-bg: rgba(57,135,229,0.14);
-      --sam: #3987e5; --hyn: #d95926; --mu: #199e70; --kio: #9085e9; --asml: #c98500;
+      --sam: #3987e5; --hyn: #d95926; --mu: #199e70; --kio: #9085e9; --asml: #c98500; --sndk: #d55181; --nvda: #0ca30c;
     }
   }
   :root[data-theme="dark"] {
@@ -269,7 +269,7 @@
     <div class="tile"><div class="k">4사 2026년 CapEx 계획</div><div class="v">~$733B</div><div class="d">전년 $409B 대비 <span class="pos">+79%</span> · 2027 전망 $1.0~1.2조 달러</div></div>
     <div class="tile"><div class="k">클라우드 3사 성장률</div><div class="v">전부 가속</div><div class="d">AWS 28→37% · Azure 40→43% · GCP 63→82%</div></div>
     <div class="tile"><div class="k">주가 반응 스프레드</div><div class="v">±15%p</div><div class="d">MSFT·AMZN +15% vs GOOGL -7%·META ≈-9%</div></div>
-    <div class="tile"><div class="k">YTD 주가 (연초=100)</div><div class="v">반도체 압승</div><div class="d">반도체 +52~346% vs 빅테크 -16~+18%</div></div>
+    <div class="tile"><div class="k">YTD 주가 (연초=100)</div><div class="v">반도체 압승</div><div class="d">메모리 +119~412% vs 빅테크 -16~+18% · 엔비디아는 +7.6%</div></div>
   </div>
   <div class="callout">
     <strong>3줄 요약.</strong> ① 4사 모두 CapEx를 분기당 $30~54B까지 늘리며 FCF가 급감(알파벳·아마존은 사상 첫 마이너스)했지만, 클라우드 매출은 3사 모두 <em>가속</em>하며 AI 수요가 실체임을 증명했다. ② 그런데 주가는 극단적으로 갈렸다 — 수요 증거(가속하는 클라우드, 수주잔고, AI 런레이트)를 제시한 MSFT·아마존은 +15%, 증거 없이 지출 계획만 키운 알파벳·메타는 -7~-9%. ③ 반도체는 사상 최대 실적에도 "빅테크가 계속 쓸 수 있냐"는 의심에 급락했다가, 빅테크 호실적 확인 후 사상 최대 반등(KOSPI 7/31 +18%) — <strong>반도체 주가의 열쇠를 빅테크 어닝콜이 쥐는 구조</strong>가 굳어졌다.
@@ -331,6 +331,18 @@
     </svg>
     <p class="note" style="margin-top:8px">읽는 포인트: ① 4사 모두 3월에 연중 저점(MSFT 76.5까지) — "AI 지출 우려"가 상반기 내내 빅테크를 눌렀다. ② 7월 실적 주간에 아마존·MSFT만 수직 반등 — 실적이 갈라놓은 궤적. ③ MSFT는 사상 최대 시총 증가일(+15.5%)을 겪고도 YTD -3.9% — 랠리가 아니라 <b>회복</b>이었다. 메타는 84.3으로 4사 중 최하위.</p>
   </figure>
+
+  <div class="tblwrap"><table>
+    <thead><tr><th>기업</th><th class="num">7/31 종가</th><th class="num">시총 (원화 환산)</th><th class="num">연초=100</th><th class="num">YTD</th></tr></thead>
+    <tbody>
+      <tr><td class="co"><span class="dot" style="background:var(--googl)"></span>알파벳</td><td class="num">$356.13</td><td class="num">$4.36T <span class="note">(₩6,209조)</span></td><td class="num">113.8</td><td class="num pos">+13.8%</td></tr>
+      <tr><td class="co"><span class="dot" style="background:var(--msft)"></span>마이크로소프트</td><td class="num">$464.72</td><td class="num">$3.45T <span class="note">(₩4,913조)</span></td><td class="num">96.1</td><td class="num neg">-3.9%</td></tr>
+      <tr><td class="co"><span class="dot" style="background:var(--amzn)"></span>아마존</td><td class="num">$271.58</td><td class="num">$2.93T <span class="note">(₩4,172조)</span></td><td class="num">117.7</td><td class="num pos">+17.7%</td></tr>
+      <tr><td class="co"><span class="dot" style="background:var(--meta)"></span>메타</td><td class="num">$556.71</td><td class="num">$1.42T <span class="note">(₩2,022조)</span></td><td class="num">84.3</td><td class="num neg">-15.7%</td></tr>
+    </tbody>
+    <tfoot><tr><td>4사 합산 시총</td><td class="num">—</td><td class="num">$12.16T <span class="note">(₩17,316조)</span></td><td class="num">—</td><td class="num">—</td></tr></tfoot>
+  </table></div>
+  <p class="note">시총은 2026년 7월 31일 종가 기준, 원화 환산은 서울 외환시장 종가 USD/KRW 1,424원 적용. 알파벳은 A·C 클래스 합산. 참고로 MSFT는 7월 30일 하루에만 시총 약 $450B(₩640조)가 늘었다 — 4사 중 메타 시총의 3분의 1에 해당하는 금액이 하루에 생긴 셈.</p>
 </section>
 
 <!-- ================= 1. CapEx ================= -->
@@ -649,54 +661,75 @@
   <h2>주가 스코어보드 — 연초 = 100</h2>
   <p class="sub">같은 기간 반도체는 차원이 다른 상승. 다만 7월 급락으로 <strong>고점 대비 30~50% 되돌림</strong>이 있었다는 점이 더 중요하다.</p>
   <figure>
-    <figcaption>반도체 5사 주가 (2025년 말 = 100, 월말 종가 · <b>로그 눈금</b>)</figcaption>
-    <p class="figsub">상승폭 차이가 워낙 커서 로그 눈금 사용 — 같은 기울기 = 같은 상승률. 7월 말 기준 키옥시아 446 · 마이크론 288 · 하이닉스 264 · 삼성 219 · ASML 152.</p>
-    <svg viewBox="0 0 720 320" style="width:100%;height:auto" role="img" aria-label="반도체 5사 연초 대비 지수화 주가 라인 차트 (로그 눈금)">
+    <figcaption>반도체 7사 주가 (2025년 말 = 100, 월말 종가 · <b>로그 눈금</b>)</figcaption>
+    <p class="figsub">상승폭 차이가 워낙 커서 로그 눈금 사용 — 같은 기울기 = 같은 상승률. 메모리(샌디스크·키옥시아·마이크론·하이닉스·삼성)와 비메모리(엔비디아·ASML)의 궤적이 완전히 갈렸다.</p>
+    <svg viewBox="0 0 720 322" style="width:100%;height:auto" role="img" aria-label="반도체 7사 연초 대비 지수화 주가 라인 차트 (로그 눈금)">
       <g stroke="var(--grid)" stroke-width="1">
-        <line x1="40" y1="51.8" x2="628" y2="51.8"/><line x1="40" y1="121.2" x2="628" y2="121.2"/><line x1="40" y1="190.6" x2="628" y2="190.6"/><line x1="40" y1="260" x2="628" y2="260" stroke="var(--baseline)" stroke-dasharray="4 3"/>
+        <line x1="40" y1="40" x2="610" y2="40"/><line x1="40" y1="61.1" x2="610" y2="61.1"/><line x1="40" y1="126.8" x2="610" y2="126.8"/><line x1="40" y1="192.4" x2="610" y2="192.4"/><line x1="40" y1="258" x2="610" y2="258" stroke="var(--baseline)" stroke-dasharray="4 3"/>
       </g>
       <g fill="var(--muted)" font-size="10" text-anchor="end">
-        <text x="36" y="55">800</text><text x="36" y="125">400</text><text x="36" y="194">200</text><text x="36" y="264">100</text>
+        <text x="36" y="43">1000</text><text x="36" y="65">800</text><text x="36" y="130">400</text><text x="36" y="196">200</text><text x="36" y="262">100</text>
       </g>
       <g fill="var(--muted)" font-size="10" text-anchor="middle">
-        <text x="40" y="305">'25말</text><text x="124" y="305">1월</text><text x="209" y="305">2월</text><text x="293" y="305">3월</text><text x="377" y="305">4월</text><text x="461" y="305">5월</text><text x="546" y="305">6월</text><text x="628" y="305">7월</text>
+        <text x="40" y="307">'25말</text><text x="121" y="307">1월</text><text x="203" y="307">2월</text><text x="284" y="307">3월</text><text x="366" y="307">4월</text><text x="447" y="307">5월</text><text x="529" y="307">6월</text><text x="610" y="307">7월</text>
       </g>
-      <polyline points="40,260 124,188 209,189 293,200 377,132 461,75 546,44 628,110" fill="none" stroke="var(--kio)" stroke-width="2.5" stroke-linejoin="round"/>
-      <polyline points="40,260 124,223 209,223 293,243 377,201 461,137 546,120 628,154" fill="none" stroke="var(--mu)" stroke-width="2.5" stroke-linejoin="round"/>
-      <polyline points="40,260 124,227 209,211 293,239 377,192 461,132 546,119 628,163" fill="none" stroke="var(--hyn)" stroke-width="2.5" stroke-linejoin="round"/>
-      <polyline points="40,260 124,231 209,201 293,227 377,199 461,163 546,157 628,182" fill="none" stroke="var(--sam)" stroke-width="2.5" stroke-linejoin="round"/>
-      <polyline points="40,260 124,229 209,228 293,239 377,228 461,217 546,198 628,216" fill="none" stroke="var(--asml)" stroke-width="2.5" stroke-linejoin="round"/>
+      <polyline points="40,258 121,174 203,165 284,165 366,113 447,72 529,44 610,103" fill="none" stroke="var(--sndk)" stroke-width="2.5" stroke-linejoin="round"/>
+      <polyline points="40,258 121,190 203,191 284,201 366,137 447,84 529,54 610,117" fill="none" stroke="var(--kio)" stroke-width="2.5" stroke-linejoin="round"/>
+      <polyline points="40,258 121,223 203,223 284,242 366,202 447,142 529,126 610,158" fill="none" stroke="var(--mu)" stroke-width="2.5" stroke-linejoin="round"/>
+      <polyline points="40,258 121,227 203,212 284,238 366,194 447,137 529,125 610,166" fill="none" stroke="var(--hyn)" stroke-width="2.5" stroke-linejoin="round"/>
+      <polyline points="40,258 121,230 203,202 284,227 366,200 447,166 529,161 610,184" fill="none" stroke="var(--sam)" stroke-width="2.5" stroke-linejoin="round"/>
+      <polyline points="40,258 121,231 203,229 284,238 366,230 447,219 529,199 610,218" fill="none" stroke="var(--asml)" stroke-width="2.5" stroke-linejoin="round"/>
+      <polyline points="40,258 121,256 203,263 284,264 366,252 447,246 529,251 610,251" fill="none" stroke="var(--nvda)" stroke-width="2.5" stroke-linejoin="round"/>
       <g>
-        <circle cx="546" cy="44" r="4" fill="var(--kio)"><title>키옥시아 6월 말 859 — 연중 고점 (YTD +759%)</title></circle>
-        <circle cx="628" cy="110" r="4" fill="var(--kio)"><title>키옥시아 7월 말 446 (YTD +346%) — 고점 대비 -48%</title></circle>
-        <circle cx="628" cy="154" r="4" fill="var(--mu)"><title>마이크론 7월 말 288 (YTD +188%)</title></circle>
-        <circle cx="628" cy="163" r="4" fill="var(--hyn)"><title>SK하이닉스 7월 말 264 (YTD +164%) — 6월 고점 407 대비 -35%</title></circle>
-        <circle cx="628" cy="182" r="4" fill="var(--sam)"><title>삼성전자 7월 말 219 (YTD +119%)</title></circle>
-        <circle cx="628" cy="216" r="4" fill="var(--asml)"><title>ASML 7월 말 152 (YTD +52%)</title></circle>
+        <circle cx="529" cy="44" r="4" fill="var(--sndk)"><title>샌디스크 6월 말 958 — 전 종목 최고점 (YTD +858%)</title></circle>
+        <circle cx="610" cy="103" r="4" fill="var(--sndk)"><title>샌디스크 7월 말 512 (YTD +412%) — 고점 대비 -47%</title></circle>
+        <circle cx="610" cy="117" r="4" fill="var(--kio)"><title>키옥시아 7월 말 446 (YTD +346%) — 고점 대비 -48%</title></circle>
+        <circle cx="610" cy="158" r="4" fill="var(--mu)"><title>마이크론 7월 말 288 (YTD +188%)</title></circle>
+        <circle cx="610" cy="166" r="4" fill="var(--hyn)"><title>SK하이닉스 7월 말 264 (YTD +164%) — 6월 고점 407 대비 -35%</title></circle>
+        <circle cx="610" cy="184" r="4" fill="var(--sam)"><title>삼성전자 7월 말 219 (YTD +119%)</title></circle>
+        <circle cx="610" cy="218" r="4" fill="var(--asml)"><title>ASML 7월 말 152 (YTD +52%)</title></circle>
+        <circle cx="610" cy="251" r="4" fill="var(--nvda)"><title>엔비디아 7월 말 108 (YTD +7.6%) — 매출 +85% 성장에도 주가는 제자리</title></circle>
       </g>
-      <g font-size="11.5" font-weight="700">
-        <text x="642" y="114" fill="var(--kio)">키옥시아 446</text>
-        <text x="642" y="152" fill="var(--mu)">마이크론 288</text>
-        <text x="642" y="169" fill="var(--hyn)">하이닉스 264</text>
-        <text x="642" y="186" fill="var(--sam)">삼성 219</text>
-        <text x="642" y="220" fill="var(--asml)">ASML 152</text>
+      <g font-size="11" font-weight="700">
+        <text x="618" y="100" fill="var(--sndk)">샌디스크 512</text>
+        <text x="618" y="121" fill="var(--kio)">키옥시아 446</text>
+        <text x="618" y="156" fill="var(--mu)">마이크론 288</text>
+        <text x="618" y="172" fill="var(--hyn)">하이닉스 264</text>
+        <text x="618" y="188" fill="var(--sam)">삼성 219</text>
+        <text x="618" y="222" fill="var(--asml)">ASML 152</text>
+        <text x="618" y="255" fill="var(--nvda)">엔비디아 108</text>
       </g>
     </svg>
-    <div class="tiles" style="margin-top:14px">
-      <div class="tile"><div class="k">YTD 최고 · 키옥시아</div><div class="v">+346%</div><div class="d">6월 고점 +759% → 7월 -48% 되돌림</div></div>
-      <div class="tile"><div class="k">SK하이닉스</div><div class="v">+164%</div><div class="d">6월 고점 대비 <span class="neg">-35%</span></div></div>
-      <div class="tile"><div class="k">삼성전자</div><div class="v">+119%</div><div class="d">6월 고점 대비 <span class="neg">-21%</span></div></div>
-      <div class="tile"><div class="k">ASML (장비)</div><div class="v">+52%</div><div class="d">메모리 대비 완만 — 진폭 작은 자산</div></div>
-    </div>
-    <p class="note" style="margin-top:10px">읽는 포인트: ① 5개 종목의 궤적이 <b>거의 겹친다</b> — 개별 실적이 아니라 하나의 사이클 베팅으로 움직였다는 증거. ② 7월 조정폭이 종목별로 갈렸다(키옥시아 -48% &gt; 하이닉스 -35% &gt; 삼성 -21% &gt; ASML): <b>많이 오른 순서대로 많이 빠졌다</b> — 실적 차이가 아니라 포지션 쏠림의 청산. ③ ASML의 완만한 기울기는 장비주가 사이클의 진폭이 아닌 지속기간에 베팅하는 자산임을 보여준다.</p>
   </figure>
 
-  <div class="callout"><strong>두 차트를 겹쳐 보면.</strong> 같은 7개월 동안 반도체는 +52~346%, 빅테크는 -16~+18%였다. 빅테크가 <b>돈을 쓰는 쪽</b>, 반도체가 <b>돈을 받는 쪽</b>이라는 구조가 주가에 그대로 반영된 결과다. 다만 7월에 드러났듯 이 관계는 일방적이다 — 받는 쪽(반도체)의 주가는 쓰는 쪽(빅테크)이 계속 쓸 것이라는 <em>믿음</em>에 의존하므로, 빅테크 어닝콜 한 번에 30% 되돌림이 나올 수 있다. 높은 수익률의 대가로 높은 변동성을 산 셈.</div>
+  <div class="tblwrap"><table>
+    <thead><tr><th>종목</th><th class="num">7/31 종가</th><th class="num">시총 (환산)</th><th class="num">연초=100</th><th class="num">YTD</th><th class="num">6월 고점 대비</th></tr></thead>
+    <tbody>
+      <tr><td class="co"><span class="dot" style="background:var(--sndk)"></span>샌디스크</td><td class="num">$1,214.83</td><td class="num">$179.9B <span class="note">(₩256조)</span></td><td class="num">511.8</td><td class="num pos">+411.8%</td><td class="num neg">-47%</td></tr>
+      <tr><td class="co"><span class="dot" style="background:var(--kio)"></span>키옥시아</td><td class="num">¥46,500</td><td class="num">¥25.5조 <span class="note">($162B·₩231조)</span></td><td class="num">445.6</td><td class="num pos">+345.6%</td><td class="num neg">-48%</td></tr>
+      <tr><td class="co"><span class="dot" style="background:var(--mu)"></span>마이크론</td><td class="num">$823.03</td><td class="num">$929.5B <span class="note">(₩1,324조)</span></td><td class="num">288.4</td><td class="num pos">+188.4%</td><td class="num neg">-29%</td></tr>
+      <tr><td class="co"><span class="dot" style="background:var(--hyn)"></span>SK하이닉스</td><td class="num">₩1,718,000</td><td class="num">₩1,255조 <span class="note">($881B)</span></td><td class="num">263.9</td><td class="num pos">+163.9%</td><td class="num neg">-35%</td></tr>
+      <tr><td class="co"><span class="dot" style="background:var(--sam)"></span>삼성전자</td><td class="num">₩262,500</td><td class="num">₩1,511조 <span class="note">($1.06T)</span></td><td class="num">218.9</td><td class="num pos">+118.9%</td><td class="num neg">-21%</td></tr>
+      <tr><td class="co"><span class="dot" style="background:var(--asml)"></span>ASML</td><td class="num">$1,629.00</td><td class="num">$633.6B <span class="note">(₩902조)</span></td><td class="num">152.3</td><td class="num pos">+52.3%</td><td class="num neg">-18%</td></tr>
+      <tr><td class="co"><span class="dot" style="background:var(--nvda)"></span>엔비디아</td><td class="num">$200.75</td><td class="num">$4.86T <span class="note">(₩6,921조)</span></td><td class="num">107.6</td><td class="num pos">+7.6%</td><td class="num">+0%</td></tr>
+    </tbody>
+  </table></div>
+  <p class="note">삼성전자 시총은 보통주 기준(우선주 포함 시 ₩1,669조). 원화 환산은 USD/KRW 1,424원, JPY/KRW 9.05원(7월 31일 서울 외환시장 종가) 적용. 참고로 <b>엔비디아 한 종목($4.86T)이 나머지 6개 반도체 종목 합산보다 크다</b>.</p>
+
+  <div class="tiles" style="margin-top:14px">
+    <div class="tile"><div class="k">YTD 1위 · 샌디스크</div><div class="v">+412%</div><div class="d">6월 고점은 +858% → 7월 -47% 되돌림</div></div>
+    <div class="tile"><div class="k">메모리 5사 평균</div><div class="v">+246%</div><div class="d">샌디스크·키옥시아·마이크론·하이닉스·삼성</div></div>
+    <div class="tile"><div class="k">엔비디아</div><div class="v">+7.6%</div><div class="d">매출 <span class="pos">+85%</span> 성장에도 주가는 제자리</div></div>
+    <div class="tile"><div class="k">ASML (장비)</div><div class="v">+52%</div><div class="d">진폭 작은 자산 — 사이클 지속기간에 베팅</div></div>
+  </div>
+  <p class="note" style="margin-top:10px">읽는 포인트: ① <b>메모리 5사의 궤적이 거의 겹친다</b> — 개별 실적이 아니라 하나의 사이클 베팅으로 움직였다는 증거. ② 7월 조정폭이 <b>많이 오른 순서대로</b> 컸다(샌디스크 -47%, 키옥시아 -48% &gt; 하이닉스 -35% &gt; 삼성 -21% &gt; ASML -18%) — 실적 차이가 아니라 포지션 쏠림의 청산. ③ <b>엔비디아의 소외가 올해 가장 흥미로운 대목</b>: 분기 매출 $81.6B(+85% YoY), 영업이익률 65.6%인데 주가는 +7.6%. 시장은 이미 엔비디아의 성장을 가격에 반영해뒀고, 올해의 초과수익은 <b>공급이 부족한 메모리</b>에서 나왔다. AI 칩 수요의 병목이 GPU에서 HBM·NAND로 이동했다는 것이 주가로 표현된 셈. ④ 그 결과 <b>ASIC 비중 확대</b>(GPU 69.7%, ASIC 27.8%)가 엔비디아엔 점유율 리스크로, 메모리엔 추가 수요로 작용하는 구도가 강화됐다.</p>
+
+  <div class="callout"><strong>두 차트를 겹쳐 보면.</strong> 같은 7개월 동안 메모리 반도체는 +119~412%, 빅테크는 -16~+18%였다(엔비디아는 예외적으로 +7.6%). 빅테크가 <b>돈을 쓰는 쪽</b>, 반도체가 <b>돈을 받는 쪽</b>이라는 구조가 주가에 그대로 반영된 결과다. 다만 7월에 드러났듯 이 관계는 일방적이다 — 받는 쪽(반도체)의 주가는 쓰는 쪽(빅테크)이 계속 쓸 것이라는 <em>믿음</em>에 의존하므로, 빅테크 어닝콜 한 번에 30% 되돌림이 나올 수 있다. 높은 수익률의 대가로 높은 변동성을 산 셈.</div>
 </section>
 <!-- ================= 8. 반도체 ================= -->
 <section>
   <h2><span class="no">8</span>반도체 실적 — 슈퍼사이클의 숫자들</h2>
-  <p class="sub">메모리 3사 + 키옥시아는 모두 사상 최대 실적. 문제는 실적이 아니라 기대치와 지속성이었다.</p>
+  <p class="sub">메모리 5사(삼성·하이닉스·마이크론·키옥시아·샌디스크)는 모두 사상 최대 실적. 문제는 실적이 아니라 기대치와 지속성이었다.</p>
 
   <div class="tblwrap"><table>
     <thead><tr><th>기업 (발표일)</th><th class="num">매출</th><th class="num">영업이익</th><th>핵심 포인트</th><th class="num">주가 반응</th></tr></thead>
@@ -705,6 +738,8 @@
       <tr><td class="co">SK하이닉스 (7/28)</td><td class="num">79.3조원<br><span class="note">+257% YoY</span></td><td class="num">60.5조원<br><span class="note">마진 76%</span></td><td>사상 최대인데 컨센서스(84조/64조) 미달 — HBM4 매출 인식이 하반기로 밀림. 2026 캐파 완판, CEO "2027년은 역대 최악의 공급부족 해가 될 수도". 나스닥 상장($26.5B) 완료</td><td class="num neg">-9.6%<br><span class="note">7/31 +30% 반등</span></td></tr>
       <tr><td class="co">마이크론 (6/24, 3~5월 분기)</td><td class="num">$41.5B<br><span class="note">+346% YoY</span></td><td class="num">GM 84.9%<br><span class="note">사상 최대</span></td><td>HBM4 분기 매출 $1B 돌파, HBM 2026년 물량 완판. 장기공급계약 16건·계약가치 $100B+. 차분기 가이드 매출 $50B</td><td class="num pos">+15%</td></tr>
       <tr><td class="co">키옥시아 (7/31, 4~6월 분기)</td><td class="num">¥1.77조<br><span class="note">+416% YoY</span></td><td class="num">¥1.33조<br><span class="note">마진 75%</span></td><td>NAND ASP +70% QoQ. 데이터센터 SSD가 스토리지 매출의 60%+. 차분기 가이드 +35% QoQ, ¥8,000억 자사주 매입</td><td class="num pos">+17.7%</td></tr>
+      <tr><td class="co">샌디스크 (4/30, 1~4월 분기)</td><td class="num">$5.95B<br><span class="note">+251% YoY</span></td><td class="num">$4.11B<br><span class="note">마진 69.1%</span></td><td>NAND 가격 급등이 전부 이익으로 — 출하 비트는 YoY 보합인데 매출 3.5배. 데이터센터 매출 +645% YoY. 장기공급계약 5건·최소 계약가치 $42B+(선수금 포함 보증 $11B+). 부채 전액 상환 후 $6B 자사주. <b>6월 분기 실적은 8/5 발표 예정</b>(가이던스 $7.75~8.25B)</td><td class="num pos">+8.3%<br><span class="note">3일간 +28%</span></td></tr>
+      <tr><td class="co">엔비디아 (5/20, 2~4월 분기)</td><td class="num">$81.6B<br><span class="note">+85% YoY</span></td><td class="num">$53.5B<br><span class="note">마진 65.6%</span></td><td>데이터센터 $75.2B(+92%). 중국향 데이터센터 매출 0 가정하고도 차분기 가이드 $91B. Vera Rubin 5월 말 양산 발표·가을 출하. $80B 자사주 추가. <b>다음 실적 8/26</b> — 이번 사이클 최대 검증 이벤트</td><td class="num neg">-1.8%<br><span class="note">비트에도 하락</span></td></tr>
       <tr><td class="co">ASML (7/15)</td><td class="num">€9.3B<br><span class="note">+21% YoY</span></td><td class="num">GM 54%</td><td>연간 가이던스 2번째 상향(€43~45B). 2027년 EUV 주문 "거의 완판", 캐파 +30% 증설. High-NA로 인텔 18A 첫 양산칩 출하</td><td class="num neg">약 -3.3%<br><span class="note">차익실현</span></td></tr>
       <tr><td class="co">TSMC (7/16)</td><td class="num">NT$1.27조<br><span class="note">+36% YoY</span></td><td class="num">GM 67.7%<br><span class="note">사상 최대</span></td><td>HPC/AI가 매출의 66%. 2026 성장 가이던스 "40% 이상"으로 상향, CapEx $60~64B로 상향. CoWoS 캐파 연 80% 증설</td><td class="num">+1.2%<br><span class="note">랠리 무산</span></td></tr>
     </tbody>
@@ -738,20 +773,33 @@
       <div class="brow"><span class="bl">2025</span><div class="track"><div class="bar" style="left:0;width:96%;background:var(--accent);opacity:.65" title="2025년 €9.6B"></div></div><span class="bval">9.6</span></div>
       <div class="brow"><span class="bl">26 H1</span><div class="track"><div class="bar" style="left:0;width:57%;background:var(--accent)" title="2026년 상반기 €5.7B (1Q 2.8 + 2Q 2.9)"></div></div><span class="bval"><b>5.7</b></span></div>
     </div>
-    <div class="sm"><h4>읽는 법</h4><p class="unit">메모리 vs 장비의 체질 차이</p>
-      <p style="font-size:12.5px;color:var(--ink-2);margin:0">메모리 4사는 <b>2026년 반기·분기 이익이 전년 연간을 초과</b>하는 수직 상승 — 가격(ASP) 급등이 이익으로 직결되는 구조다. 반면 ASML은 완만한 성장 — 장비는 가격이 아니라 <b>수주·출하 대수</b>로 벌기 때문에 사이클의 진폭이 작고 시차가 있다. 메모리는 사이클의 베타, 장비는 사이클의 지속기간에 베팅하는 자산이다.</p>
+    <div class="sm"><h4>샌디스크 영업이익</h4><p class="unit">$B · 회계연도(6월 말 종료) · 'FY26은 9개월 누계</p>
+      <div class="brow"><span class="bl">FY24</span><div class="track"><div class="grid0" style="left:8%"></div><div class="bar negdir" style="left:6.4%;width:1.6%;background:var(--accent);opacity:.4" title="FY2024 -$0.47B (적자)"></div></div><span class="bval">-0.5</span></div>
+      <div class="brow"><span class="bl">FY25</span><div class="track"><div class="grid0" style="left:8%"></div><div class="bar negdir" style="left:3.4%;width:4.6%;background:var(--accent);opacity:.65" title="FY2025 -$1.38B (영업권 손상 $1.83B 포함)"></div></div><span class="bval">-1.4</span></div>
+      <div class="brow"><span class="bl">FY26*</span><div class="track"><div class="grid0" style="left:8%"></div><div class="bar" style="left:8%;width:90%;background:var(--accent)" title="FY26 9개월 누계 +$5.35B — 적자에서 대폭 흑자 전환"></div></div><span class="bval"><b>+5.4</b></span></div>
+    </div>
+    <div class="sm"><h4>엔비디아 영업이익</h4><p class="unit">$B · 회계연도(1월 말 종료) · 'FY27은 1개 분기만</p>
+      <div class="brow"><span class="bl">FY25</span><div class="track"><div class="bar" style="left:0;width:62.5%;background:var(--accent);opacity:.4" title="FY2025 $81.5B"></div></div><span class="bval">81.5</span></div>
+      <div class="brow"><span class="bl">FY26</span><div class="track"><div class="bar" style="left:0;width:100%;background:var(--accent);opacity:.65" title="FY2026 $130.4B (+60%)"></div></div><span class="bval">130.4</span></div>
+      <div class="brow"><span class="bl">27 1Q</span><div class="track"><div class="bar" style="left:0;width:41%;background:var(--accent)" title="FY27 1분기만 $53.5B — 연환산 시 $214B 페이스"></div></div><span class="bval"><b>53.5</b></span></div>
+    </div>
+    <div class="sm"><h4>읽는 법</h4><p class="unit">메모리 vs 장비 vs GPU의 체질 차이</p>
+      <p style="font-size:12.5px;color:var(--ink-2);margin:0">메모리 5사는 <b>2026년 반기·분기 이익이 전년 연간을 초과</b>하는 수직 상승 — 가격(ASP) 급등이 이익으로 직결된다(샌디스크는 출하량이 오히려 줄었는데 매출 3.5배). ASML은 완만 — 장비는 <b>출하 대수</b>로 벌기에 진폭이 작다. 엔비디아는 규모는 압도적이나 <b>이미 고성장이 주가에 반영</b>된 상태. 올해 초과수익은 "공급이 부족한 쪽"에서 나왔다.</p>
     </div>
   </div>
 
   <h3>이번 분기 모멘텀 — QoQ 영업이익 증가율과 마진</h3>
   <figure>
     <figcaption>영업이익 QoQ 증가율 (직전 분기 대비, %)</figcaption>
-    <p class="figsub">삼성·하이닉스는 1Q→2Q(2026), 마이크론은 FQ2→FQ3(2~5월), 키옥시아는 1~3월→4~6월. ASML은 매출 기준(참고).</p>
-    <div class="srow"><span class="nm">키옥시아</span><div class="track"><div class="bar" style="left:0;width:93.1%;background:var(--up)" title="키옥시아 OP ¥599B→¥1,326B (+121%)"></div></div><span class="bval pos">+121%</span></div>
-    <div class="srow"><span class="nm">마이크론</span><div class="track"><div class="bar" style="left:0;width:80%;background:var(--up)" title="마이크론 OP $16.5B→$33.7B (+104%)"></div></div><span class="bval pos">+104%</span></div>
-    <div class="srow"><span class="nm">SK하이닉스</span><div class="track"><div class="bar" style="left:0;width:46.9%;background:var(--up)" title="SK하이닉스 OP 37.6조→60.5조 (+61%)"></div></div><span class="bval pos">+61%</span></div>
-    <div class="srow"><span class="nm">삼성전자</span><div class="track"><div class="bar" style="left:0;width:43.1%;background:var(--up)" title="삼성전자 OP 57.2조→89.5조 (+56%)"></div></div><span class="bval pos">+56%</span></div>
-    <div class="srow"><span class="nm">ASML (매출)</span><div class="track"><div class="bar" style="left:0;width:4.6%;background:var(--up);opacity:.5" title="ASML 매출 €8.8B→€9.3B (+6%)"></div></div><span class="bval">+6%</span></div>
+    <p class="figsub">삼성·하이닉스는 1Q→2Q(2026), 마이크론은 FQ2→FQ3(2~5월), 키옥시아는 1~3월→4~6월, 샌디스크·엔비디아는 직전 분기→2~4월 분기. ASML은 매출 기준(참고).</p>
+    <div class="srow"><span class="nm">샌디스크</span><div class="track"><div class="bar" style="left:0;width:100%;background:var(--up)" title="샌디스크 OP $1.07B→$4.11B (+286%)"></div></div><span class="bval pos">+286%</span></div>
+    <div class="srow"><span class="nm">키옥시아</span><div class="track"><div class="bar" style="left:0;width:42.3%;background:var(--up)" title="키옥시아 OP ¥599B→¥1,326B (+121%)"></div></div><span class="bval pos">+121%</span></div>
+    <div class="srow"><span class="nm">마이크론</span><div class="track"><div class="bar" style="left:0;width:36.4%;background:var(--up)" title="마이크론 OP $16.5B→$33.7B (+104%)"></div></div><span class="bval pos">+104%</span></div>
+    <div class="srow"><span class="nm">SK하이닉스</span><div class="track"><div class="bar" style="left:0;width:21.3%;background:var(--up)" title="SK하이닉스 OP 37.6조→60.5조 (+61%)"></div></div><span class="bval pos">+61%</span></div>
+    <div class="srow"><span class="nm">삼성전자</span><div class="track"><div class="bar" style="left:0;width:19.6%;background:var(--up)" title="삼성전자 OP 57.2조→89.5조 (+56%)"></div></div><span class="bval pos">+56%</span></div>
+    <div class="srow"><span class="nm">엔비디아</span><div class="track"><div class="bar" style="left:0;width:7.3%;background:var(--up);opacity:.7" title="엔비디아 OP $44.3B→$53.5B (+21%)"></div></div><span class="bval pos">+21%</span></div>
+    <div class="srow"><span class="nm">ASML (매출)</span><div class="track"><div class="bar" style="left:0;width:2.1%;background:var(--up);opacity:.5" title="ASML 매출 €8.8B→€9.3B (+6%)"></div></div><span class="bval">+6%</span></div>
+    <p class="note" style="margin-top:8px">NAND 진영(샌디스크 +286%, 키옥시아 +121%)의 증익 속도가 DRAM 진영을 앞선다 — NAND 가격 상승이 더 늦게 시작돼 기저효과가 크기 때문. 다만 8장 수급 전망에서 보듯 NAND의 사이클 시계가 더 짧다는 점이 함정이다.</p>
   </figure>
 
   <figure>
@@ -771,6 +819,16 @@
       <div class="grp-h">키옥시아 <span class="chg">~60 → ~75%</span></div>
       <div class="brow"><span class="bl">전분기</span><div class="track"><div class="bar" style="left:0;width:66.7%;background:var(--accent);opacity:.35" title="키옥시아 1~3월 OP마진 약 60%"></div></div><span class="bval">60</span></div>
       <div class="brow"><span class="bl">이번</span><div class="track"><div class="bar" style="left:0;width:83.3%;background:var(--accent)" title="키옥시아 4~6월 non-GAAP OP마진 약 75%"></div></div><span class="bval"><b>75</b></span></div>
+    </div>
+    <div class="grp">
+      <div class="grp-h">샌디스크 <span class="chg">35.2 → 69.1%</span></div>
+      <div class="brow"><span class="bl">전분기</span><div class="track"><div class="bar" style="left:0;width:39.1%;background:var(--accent);opacity:.35" title="샌디스크 직전 분기 OP마진 35.2%"></div></div><span class="bval">35.2</span></div>
+      <div class="brow"><span class="bl">이번</span><div class="track"><div class="bar" style="left:0;width:76.8%;background:var(--accent)" title="샌디스크 2~4월 분기 OP마진 69.1%"></div></div><span class="bval"><b>69.1</b></span></div>
+    </div>
+    <div class="grp">
+      <div class="grp-h">엔비디아 <span class="chg">65.0 → 65.6% · 이미 고점 수준에서 안정</span></div>
+      <div class="brow"><span class="bl">전분기</span><div class="track"><div class="bar" style="left:0;width:72.2%;background:var(--accent);opacity:.35" title="엔비디아 FQ4 OP마진 65.0%"></div></div><span class="bval">65.0</span></div>
+      <div class="brow"><span class="bl">이번</span><div class="track"><div class="bar" style="left:0;width:72.9%;background:var(--accent)" title="엔비디아 FQ1 OP마진 65.6%"></div></div><span class="bval"><b>65.6</b></span></div>
     </div>
     <div class="grp">
       <div class="grp-h">삼성전자 (전사) <span class="chg">43 → 52% · DS부문만은 ~70%</span></div>
@@ -885,6 +943,8 @@
     <li>ASML은 2026년 1분기부터 분기 수주(북킹) 공시를 중단해 EUV 수주액은 시스템 매출로 대체 인용.</li>
     <li>연간 CapEx 시계열(2023~2025)은 Epoch AI 집계(리스 포함, SEC 공시 기반)를 사용 — 현금 기준 집계와 2024년에 최대 $22B 차이. 2026E는 가이던스 중간값 합산, 2027E는 블룸버그 집계 컨센서스(회사별 추정치는 회계연도 혼재로 참고용).</li>
     <li>키옥시아 연간 영업이익은 GAAP/non-GAAP 기준이 출처별 혼재(FY25 ¥870~876B). HBM 점유율(62/21/17)은 단일 기관의 분기 추정으로 기관별 편차 큼. HBM 2027년 시장규모는 공식 전망 부재로 성장률 역산치.</li>
+    <li>샌디스크는 6월 분기(FY26 4분기) 실적을 8월 5일 발표 예정이라, 표의 수치는 직전 분기(2~4월) 기준. 엔비디아도 2~4월 분기가 최신이며 다음 실적은 8월 26일. 엔비디아는 FY27부터 비GAAP에서 주식보상비를 제외하지 않도록 기준을 변경했고 게이밍·비주얼 부문을 별도 공시하지 않으므로 과거 수치와 직접 비교 시 주의. 샌디스크 FY2024~25 실적은 웨스턴디지털 분할 전 카브아웃 재무제표이며 FY25 적자에는 영업권 손상 $1.83B가 포함됨.</li>
+    <li>시총은 2026년 7월 31일 종가 기준이며 환율은 서울 외환시장 종가(USD/KRW 1,424원, JPY/KRW 9.05원) 적용 — 글로벌 종가 환율(1,443원) 사용 시 원화 환산액이 약 1.3% 커짐. 삼성전자는 보통주 기준이 KRX 공식 시가총액이나 해외 집계기관은 우선주 포함(₩1,669조)을 쓰는 경우가 많아 출처 간 차이가 발생함.</li>
     <li>주가 스코어보드는 월말 종가 기준(2025년 12월 30/31일 = 100). 미국 종목은 stockanalysis.com, 한국·일본 종목은 Yahoo Finance 일별 시세를 사용했고 7월 주요 등락일(MSFT +15.5%, 하이닉스 -15.4%·+30%, 키옥시아 +17.7% 등)과 대조해 검증함. 배당 미반영 순수 주가 기준이며, 한국·일본은 12월 31일이 휴장이라 12월 30일 종가를 기준값으로 사용. 삼성전자 실적일 하락폭은 언론 인용(-6.9%)과 시세 데이터(7/29 -5.2%, 7/30 -0.7%)에 차이가 있음.</li>
     <li>수급 전망(DRAM -1~2%, NAND -4~5%, 2027 방향)은 트렌드포스 2026년 7월 자료 기준 — 전망치 특성상 분기마다 수정됨.</li>
   </ul>

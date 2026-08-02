@@ -26,9 +26,13 @@
 | 아티팩트(웹 발행본) | https://claude.ai/code/artifact/ea0e24cf-9600-4aaa-ae0b-109035b1c944 | ✅ v3 발행 — ⚠️ 이 계정 소유, 아래 참고 |
 | PDF | `big4-semis-q2-2026-review.pdf` (이 폴더) | ✅ 생성 완료 (Edge headless 인쇄) |
 | GitHub | https://github.com/jinjo202/big4-review (private) | ✅ 푸시 완료 — 다른 계정 접근 시 collaborator 추가 또는 public 전환 필요 |
-| Vercel 배포 | https://big4-review.vercel.app | ✅ 배포 완료 (Vercel 계정: devbotsender8282-3212, CLI 직접 배포 — GitHub 연동 아님) |
+| Vercel 배포 (현행) | **https://big4-report.vercel.app** | ✅ 최신본 서비스 중 |
+| Vercel 구 프로젝트 | ~~https://big4-review.vercel.app~~ | ⛔ 사용 금지 — 아래 참고 |
 
-**Vercel 재배포 방법**: 이 폴더에서 `vercel deploy --prod --yes` (index.html이 진입점, `big4-semis-q2-2026-review.html` 수정 후 `Copy-Item`으로 index.html 갱신 필요).
+**⚠️ Vercel 프로젝트 이슈**: 최초 프로젝트 `big4-review`는 첫 배포 후 모든 후속 배포가 `BLOCKED` 상태로 실패함(계정·플랜은 정상, 프로젝트 고유 문제로 추정). 그래서 **새 프로젝트 `big4-report`로 이전**했고 현재 정상 동작. big4-review.vercel.app은 구버전(탭·차트 없는 초기본)을 계속 서빙하므로 공유하지 말 것. 정리하려면 Vercel 대시보드에서 big4-review 프로젝트 삭제 권장.
+
+**Vercel 재배포 방법**: 배포 디렉터리는 스크래치패드의 `deploy2/`(index.html 단일 파일). 프로젝트 폴더에서 배포하려면 `vercel link --project big4-report` 후 `vercel deploy --prod --yes`. HTML 수정 시 `index.html`도 함께 갱신 필요.
+**주의**: 이 환경에서 vercel CLI가 완료 후 종료되지 않고 멈추는 경우가 있음 → `Start-Process cmd /c "vercel deploy --prod --yes > log 2>&1"`로 분리 실행 후 로그 확인하는 방식 사용.
 **Vercel 비공개 설정**: 기본값은 URL 공개 상태. 대시보드 → big4-review → Settings → Deployment Protection → **Vercel Authentication → All Deployments** 활성화 시 이 Vercel 계정 로그인자만 열람 가능(무료). 단, 다른 사람/계정과 공유하려면 팀 멤버 추가 필요(Hobby 플랜 제약) — Password Protection은 유료 기능.
 
 **⚠️ 아티팩트 주의**: 위 URL은 원 계정 소유라 다른 계정에서는 같은 URL로 업데이트 불가.
@@ -53,6 +57,9 @@ HTML은 자기완결형(외부 의존성 0, 인라인 CSS/JS)이라 파일만 �
 - **반도체 2Q26 OP**: 삼성 89.5조(마진 52%, 발표일 -6.9%), 하이닉스 60.5조(마진 76%, -9.6%), 마이크론 FQ3 $33.7B(81.2%, +15%), 키옥시아 ¥1,326B(75%, +17.7%), ASML €9.3B 매출(GM 54%, -3.3%)
 - **수급**: DRAM 2026 -1~2% 부족 → 2027 확대(신규 물량 2028). NAND 2026 -4~5% 부족 → 2H27 공급과잉 전환. HBM 시장 17→34.5→55~60→~95(2027 역산)$B
 - **7월 로테이션**: KOSPI 7/28 -10.8% 서킷브레이커 → 7/29 사상 첫 연속 CB → 7/31 +18% 사상 최대(하이닉스 +30%, 삼성 +27%, 트리거는 빅테크 호실적)
+- **YTD 주가 (연초=100, 7/31 기준)**: 샌디스크 512(+412%) · 키옥시아 446 · 마이크론 288 · 하이닉스 264 · 삼성 219 · ASML 152 · **엔비디아 108(+7.6%)** vs 아마존 118 · 알파벳 114 · MSFT 96(-3.9%) · 메타 84(-15.7%)
+- **시총 (7/31, USD/KRW 1,424)**: 엔비디아 $4.86T(₩6,921조) · 알파벳 $4.36T · MSFT $3.45T · 아마존 $2.93T · 메타 $1.42T · 삼성 ₩1,511조(보통주) · 하이닉스 ₩1,255조 · 마이크론 $929.5B · ASML $633.6B · 샌디스크 $179.9B · 키옥시아 $161.9B
+- **샌디스크·엔비디아 최신 실적**: 샌디스크 2~4월 분기 매출 $5.95B(+251% YoY)·영업익 $4.11B(69.1%), 6월 분기는 **8/5 발표 예정**. 엔비디아 2~4월 분기 매출 $81.6B(+85%)·영업익 $53.5B(65.6%), 다음 실적 **8/26**
 
 ## 5. 핵심 논지 (리포트의 뼈대)
 
