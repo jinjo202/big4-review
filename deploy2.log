@@ -1,0 +1,9 @@
+<claude-code-hint v="1" type="plugin" value="vercel@claude-plugins-official" />
+Vercel CLI 58.4.4 (Node.js 24.14.1)
+Retrieving project…
+Deploying devbotsender8282-3212s-projects/big4-report
+Uploading [--------------------] (0.0B/83B)
+Uploading [====================] (83.0B/83B)
+  Inspect         https://vercel.com/devbotsender8282-3212s-projects/big4-report/E85F1ekHpxpswAjLa1UWzqVbWyJp
+  Production      https://big4-report-o8y59vm77-devbotsender8282-3212s-projects.vercel.app
+https://big4-report-o8y59vm77-devbotsender8282-3212s-projects.vercel.appBuilding…

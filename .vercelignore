@@ -1,0 +1,7 @@
+backups
+*.pdf
+.env*
+HANDOVER.md
+deploy.log
+link.log
+big4-semis-q2-2026-review.html
