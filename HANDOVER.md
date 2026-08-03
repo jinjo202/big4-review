@@ -178,7 +178,7 @@ Remove-Item print.html
 ```bash
 git add -A && git commit -m "메시지" && git push
 ```
-저장소: https://github.com/jinjo202/big4-review (**private**). 새 계정은 접근 권한이 없으므로 collaborator 추가 또는 새 remote 설정 필요.
+저장소: https://github.com/jinjo202/big4-review (**private**). 현재 계정에서 push 정상 동작 확인됨(2026-08-03).
 
 ### 5-5. 카카오톡 전송
 카카오 MCP의 `KakaotalkChat-MemoChat` 도구 사용("나에게 보내기", **200자 제한**).
