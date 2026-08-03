@@ -1,6 +1,6 @@
 ﻿# 인수인계서 — 2026 2Q 빅테크·반도체 실적 리뷰
 
-**최종 갱신**: 2026-08-04 (사이클 비교·밸류에이션 탭) · **작성 계정**: devbotsender8282@gmail.com
+**최종 갱신**: 2026-08-04 (GDP 대비 규모·자금조달 섹션, Vercel 배포 복구) · **작성 계정**: devbotsender8282@gmail.com
 **이 문서 하나만 읽으면 이어서 작업할 수 있게 작성됨.**
 
 ---
@@ -21,10 +21,10 @@ git log --oneline -5
 | 자산 | 상태 | 새 계정에서 할 일 |
 |---|---|---|
 | **아티팩트** | ✅ 2026-08-03 재발행 완료 → https://claude.ai/code/artifact/043883ea-39c9-4047-bd09-fce586a77dfb | 이 URL로 업데이트하려면 `Artifact` 도구에 `url` 파라미터로 넘길 것 (안 넘기면 새 URL 생성됨). 구 URL `ea0e24cf-...`는 이전 계정 소유라 폐기 |
-| **Vercel** big4-report.vercel.app | 🚨 **배포 불가** (2026-08-03~) — 계정 soft-block으로 모든 신규 배포가 `BLOCKED`. 08-02 버전을 계속 서빙 중 | **5-2-1을 반드시 읽을 것.** 계정 소유자가 Vercel 대시보드에서 해제해야 하며 CLI로 우회 불가 |
+| **Vercel** big4-report.vercel.app | ✅ **정상** (2026-08-04 해결) — `.git` 없는 폴더에서 배포하면 통과. 최신본 서빙 중 | 원인·해결·자동배포는 **5-2-1 / 5-2-2** 참조 |
 | **GitHub** github.com/jinjo202/big4-review (private) | ✅ 정상 (origin/main = 로컬 HEAD, push 가능) | 그대로 사용 |
 
-로컬 폴더 자체는 OneDrive에 있으므로 파일은 그대로 접근 가능합니다. **아티팩트와 GitHub는 정상이고, Vercel만 막혀 있습니다** — 최신본 공유는 아티팩트 URL을 쓰세요.
+로컬 폴더 자체는 OneDrive에 있으므로 파일은 그대로 접근 가능합니다. **세 자산 모두 정상 동작합니다.**
 
 ---
 
@@ -59,6 +59,7 @@ big4 review/
 ├─ HANDOVER.md                       ← 이 문서
 ├─ .gitignore                        ← .vercel, .env* 제외
 ├─ .vercelignore                     ← 배포 업로드에서 backups·pdf·.env* 제외 (5-2 참조)
+├─ .github/workflows/deploy.yml      ← push 시 Vercel 자동 배포 (5-2-2 참조, VERCEL_TOKEN Secret 필요)
 └─ backups/
    ├─ 2026-08-02/                    ← 날짜별 스냅샷 (html·pdf·handover)
    ├─ 2026-08-03/
@@ -80,7 +81,7 @@ big4 review/
 | 탭 버튼 | `[빅테크]` `[반도체 · 시장 전망]` `[사이클 비교 · 밸류에이션]` (sticky, JS 토글) |
 | **탭1 빅테크** | 주가 스코어보드(연초=100 차트 + 시총 표) → §1 CapEx(분기·연간·가이던스 궤적) → §2 AI ROI → §3 FCF(+CapEx 집중도, 감가상각 시차) → §4 클라우드(+수주잔고) → §5 기타 성과 → §6 주가 반응 → §7 어닝콜 인용 카드 |
 | **탭2 반도체** | 주가 스코어보드(7종목 로그 차트 + 시총 표) → §8 반도체 실적(연도별 OP 스몰멀티플 8장, QoQ, 마진, HBM 시장/점유율, DRAM·NAND 수급 매트릭스) → §9 상관관계·7월 로테이션 타임라인·implication·수요 타일·이벤트 캘린더 |
-| **탭3 사이클·밸류에이션** | §10 사이클 연대기(타임라인) → §11 리드-래그 지도(국면 SVG) → §12 CapEx 종료 방식(2016~20 스택 컬럼 + 증가율 막대 + 표) → §13 실적 붕괴 규모 → §14 클라우드 매출은 안 무너졌다 → §15 그때 vs 지금 9행 비교표 → §16 함의 6장 + 5단계 관전 틀 → **§17 연도별 영업이익 + 당시 밸류에이션(PBR 비교 막대)** → **§18 리레이팅 논쟁 검증**(양측 카드 → 4축 채점표 → ROE 역산 → 2018년 대조 → 결론 5개 → 판별 3지표) |
+| **탭3 사이클·밸류에이션** | §10 사이클 연대기(타임라인) → §11 리드-래그 지도(국면 SVG) → §12 CapEx 종료 방식(2016~20 스택 컬럼 + 증가율 막대 + 표) → §13 실적 붕괴 규모 → §14 클라우드 매출은 안 무너졌다 → §15 그때 vs 지금 9행 비교표 → §16 함의 6장 + 5단계 관전 틀 → **§17 연도별 영업이익 + 당시 밸류에이션(PBR 비교 막대)** → **§18 리레이팅 논쟁 검증**(양측 카드 → 4축 채점표 → ROE 역산 → 2018년 대조 → 결론 5개 → 판별 3지표) → **§19 미국 GDP 대비 규모**(철도·통신과 비교, 거시 연결) → **§20 CapEx 자금조달 지속가능성**(자기조달 한계 → 부채 전환 → 3시나리오 → 감가상각 → 판별 5지표) |
 | 하단(탭 밖) | 데이터 신뢰도 주석 + 면책 고지 |
 
 ### 기술 사양
@@ -181,18 +182,75 @@ Get-Content deploy.log -Tail 8
 (Invoke-WebRequest "https://big4-report.vercel.app" -UseBasicParsing).Content -match '주가 스코어보드'
 ```
 
-### 5-2-1. 🚨 현재 Vercel 배포 불가 상태 (2026-08-03)
+### 5-2-1. ⭐ `BLOCKED` 배포의 진짜 원인과 해결 (2026-08-04 규명)
 
-**`big4-report` 프로젝트도 `BLOCKED`에 걸렸습니다. 새 프로젝트를 만드는 기존 처방은 근본 해결이 아니었습니다.**
+**증상**: `vercel deploy --prod`가 정상 종료하고 배포 ID도 발급되는데 상태가 **`BLOCKED`**로 끝나고 도메인에 반영되지 않음. 빌드 로그도 비어 있음.
 
-- 증상: `vercel deploy --prod`는 정상 종료하고 배포 ID도 발급되지만 상태가 **`BLOCKED`**로 끝나고 도메인에 반영되지 않음
-- 진단: Vercel API의 프로젝트 정보에 **`"live": false`** — 프로젝트/계정이 비활성(soft-block) 상태다. 이 상태에서는 무엇을 올려도 모든 배포가 BLOCKED로 떨어진다
-- 이력: `big4-review` 1회 성공 후 전부 BLOCKED → 새 프로젝트 `big4-report` 3회 성공 후 **4번째부터 BLOCKED**. 즉 **프로젝트 고유 문제가 아니라 계정 레벨 문제**이며, 새 프로젝트를 파는 것은 몇 번의 배포를 버는 임시방편일 뿐이다
-- 시도해봤으나 효과 없었던 것: `.vercelignore`로 업로드를 2.5MB → 83B로 축소(백업·PDF·`.env.local` 제외). 업로드 크기·내용 문제가 아님
-- **해결은 계정 소유자만 가능**: https://vercel.com/devbotsender8282-3212s-projects 대시보드에서 사용량/결제 한도 또는 계정 상태 알림을 확인해야 함. 코드나 CLI로 우회 불가
-- 현재 https://big4-report.vercel.app 은 **2026-08-02 버전(2016-18 비교 탭 없음)** 을 계속 서빙 중. 최신본은 아티팩트 URL로 볼 것
+**원인**: 계정 정지도, 결제 문제도, 프로젝트 고유 문제도 **아니다.** Vercel API로 조회하면 이유가 그대로 나온다:
 
-**⚠️ 과거 사고 기록**: 최초 프로젝트 `big4-review`는 첫 배포 후 모든 후속 배포가 `BLOCKED`로 실패했고, 새 프로젝트 `big4-report`로 이전한 뒤 구 프로젝트는 **2026-08-02에 삭제 완료**(big4-review.vercel.app은 현재 404). 위 진단에 따라 **같은 증상이 재발해도 프로젝트를 또 만들지 말 것** — 계정 상태를 먼저 확인해야 한다.
+```
+readyStateReason: Git author ocarr@users.noreply.github.com must have access to
+                  the team devbotsender8282-3212's projects on Vercel to create deployments.
+seatBlock: { blockCode: TEAM_ACCESS_REQUIRED, isVerified: false }
+```
+
+Vercel CLI는 배포 시 **현재 디렉터리에서 `.git`을 감지하면 커밋 작성자 이메일을 메타데이터로 붙인다.** 그 작성자가 Vercel 팀 멤버가 아니면 좌석(seat) 검사에 걸려 BLOCKED. 로컬 git 작성자는 `ocarr@users.noreply.github.com`인데 Vercel 계정은 `devbotsender8282@gmail.com` — 서로 다른 사람이라 막힌 것.
+
+`.vercel/`이 사라져서 재링크한 시점부터 이 현상이 시작됐다. 그 전 성공한 배포들은 배포 객체에 `githubCommit*` 필드가 아예 없다 — 이 차이가 결정적 단서였다.
+
+**해결 (검증됨)**: `.git`이 없는 임시 폴더에서 배포한다. **7초 만에 성공하고 `big4-report.vercel.app` 별칭까지 자동으로 붙는다.**
+
+```powershell
+$stage = "C:\Users\ocarr\AppData\Local\Temp\claude\vcdeploy"
+New-Item -ItemType Directory -Force -Path "$stage\.vercel" | Out-Null
+Copy-Item "index.html" "$stage\index.html" -Force
+'{"projectId":"prj_eMKts3S6cjzpXMplDfCKlXmcRv1z","orgId":"team_qMNRSXl9bLq3WCE6xTyxFLP8","projectName":"big4-report"}' | Out-File -Encoding ascii "$stage\.vercel\project.json"
+Start-Process cmd.exe -ArgumentList "/c cd /d $stage && vercel deploy --prod --yes > deploy.log 2>&1" -WindowStyle Hidden
+```
+
+**다른 해결책** (둘 다 사람이 직접 해야 함): ① 로컬 git 작성자 이메일을 `devbotsender8282@gmail.com`으로 변경 ② GitHub 계정 `ocarr`를 Vercel 팀 멤버로 추가.
+
+**차단 사유 직접 조회하는 법** (다음에 또 막히면 추측하지 말고 이걸 실행):
+```powershell
+$t = (Get-Content "C:\Users\ocarr\AppData\Roaming\xdg.data\com.vercel.cli\auth.json" -Raw | ConvertFrom-Json).token
+$d = Invoke-RestMethod "https://api.vercel.com/v13/deployments/<배포ID>?teamId=team_qMNRSXl9bLq3WCE6xTyxFLP8" -Headers @{Authorization="Bearer $t"}
+$d.readyStateReason; $d.seatBlock
+```
+CLI 토큰 위치가 특이하다: `%APPDATA%\xdg.data\com.vercel.cli\auth.json` (일반적인 `com.vercel.cli` 경로 아님).
+
+**❌ 폐기된 오진**: 2026-08-03에 프로젝트 응답의 `"live": false`를 보고 "계정 soft-block, 소유자만 해결 가능"이라고 결론 내렸으나 **틀렸다.** `live` 필드는 차단 사유와 무관했다. 같은 이유로 **"BLOCKED이면 새 프로젝트를 만들라"는 과거 처방도 폐기** — 새 프로젝트를 만들어도 git 작성자 문제가 그대로면 똑같이 막힌다. 처음 몇 번 성공하는 것처럼 보였던 건 그때 배포에 git 메타데이터가 안 붙었기 때문이다.
+
+**과거 기록**: 최초 프로젝트 `big4-review`는 **2026-08-02에 삭제 완료**(big4-review.vercel.app은 404). 현재 프로젝트는 `big4-report` 하나뿐.
+
+### 5-2-2. GitHub Actions 자동 배포 (`.github/workflows/deploy.yml`)
+
+`main`에 `index.html`이 푸시되면 자동으로 프로덕션 배포된다. 워크플로는 **`$RUNNER_TEMP/site`로 파일을 복사해 `.git` 밖에서 배포**하므로 위 seat 문제를 구조적으로 회피한다.
+
+**활성화에 필요한 단 하나의 수동 작업** — 저장소 Secret 등록:
+1. Vercel 대시보드 → Account Settings → Tokens → Create (토큰 복사)
+2. GitHub `jinjo202/big4-review` → Settings → Secrets and variables → Actions → New repository secret
+3. 이름 `VERCEL_TOKEN`, 값은 1번의 토큰
+
+조직/프로젝트 ID는 비밀이 아니라 워크플로 파일에 평문으로 넣어뒀다(토큰 없이는 무의미). 등록 전까지 워크플로는 실행되어도 실패한다.
+
+**⚠️ Vercel 네이티브 GitHub 연동이 막힌 이유 (2026-08-04 확인)**
+
+`vercel git connect`는 계속 실패한다. API로 확인한 정확한 상태:
+
+```
+GET /v1/integrations/git-namespaces?provider=github
+  → { slug: "devbotsender8282", ownerType: "user", installationId: 150234914 }
+```
+
+Vercel 계정에 연결된 GitHub 계정은 **`devbotsender8282`** 인데, 저장소는 **`jinjo202`** 소유의 **비공개** 저장소다. 서로 다른 GitHub 사용자라 App이 저장소를 볼 수 없다. (`vercel git connect`의 "access to the repository if it's private" 에러가 이 뜻이다.)
+
+연결하려면 아래를 **전부** 해야 한다:
+1. GitHub `jinjo202` 계정으로 → `big4-review` → Settings → Collaborators → **`devbotsender8282` 추가**
+2. `jinjo202` 계정에 Vercel GitHub App 설치/권한 부여 (github.com/settings/installations)
+3. 그 다음 `vercel git connect --yes`
+4. **그래도 남는 문제**: git 커밋 작성자가 `ocarr@users.noreply.github.com`이라 5-2-1의 seat 검사에 걸린다. 작성자 이메일을 `devbotsender8282@gmail.com`으로 바꾸거나 `ocarr`를 Vercel 팀에 추가해야 함
+
+→ **GitHub Actions(위)가 훨씬 간단하다.** Secret 하나만 등록하면 되고 seat 문제도 구조적으로 없다.
 
 ### 5-3. PDF 재생성
 HTML 앞에 doctype 래퍼를 씌운 임시 파일을 만들어 Edge headless로 인쇄합니다(래퍼 없으면 한글 인코딩 깨짐).

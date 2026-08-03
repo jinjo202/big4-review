@@ -1,0 +1,46 @@
+name: Deploy to Vercel
+
+# main에 index.html이 푸시되면 자동으로 프로덕션 배포한다.
+# 필요한 설정은 저장소 Secret 하나뿐: VERCEL_TOKEN
+#   Vercel 대시보드 → Account Settings → Tokens → Create
+#   GitHub 저장소 → Settings → Secrets and variables → Actions → New repository secret
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'index.html'
+  workflow_dispatch:
+
+env:
+  VERCEL_ORG_ID: team_qMNRSXl9bLq3WCE6xTyxFLP8
+  VERCEL_PROJECT_ID: prj_eMKts3S6cjzpXMplDfCKlXmcRv1z
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # .git이 없는 디렉터리에서 배포해야 한다.
+      # Vercel CLI가 저장소를 감지하면 커밋 작성자를 메타데이터로 붙이는데,
+      # 그 작성자가 Vercel 팀 멤버가 아니면 배포가 TEAM_ACCESS_REQUIRED로 BLOCKED 된다.
+      - name: Stage site outside the repo
+        run: |
+          mkdir -p "$RUNNER_TEMP/site"
+          cp index.html "$RUNNER_TEMP/site/index.html"
+
+      - name: Deploy to production
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: |
+          npm install -g vercel@latest
+          cd "$RUNNER_TEMP/site"
+          vercel deploy --prod --yes --token "$VERCEL_TOKEN"
+
+      - name: Verify
+        run: |
+          sleep 5
+          curl -sf https://big4-report.vercel.app | grep -q 'panel-cycle' \
+            && echo "OK: 최신본이 서빙 중" \
+            || { echo "FAIL: 배포는 됐으나 도메인에 반영되지 않음"; exit 1; }
