@@ -1,6 +1,6 @@
 # 인수인계서 — 2026 2Q 빅테크·반도체 실적 리뷰
 
-**최종 갱신**: 2026-08-02 · **작성 계정**: devbotsender8282@gmail.com
+**최종 갱신**: 2026-08-03 · **작성 계정**: devbotsender8282@gmail.com
 **이 문서 하나만 읽으면 이어서 작업할 수 있게 작성됨.**
 
 ---
@@ -20,11 +20,11 @@ git log --oneline -5
 
 | 자산 | 상태 | 새 계정에서 할 일 |
 |---|---|---|
-| **아티팩트** claude.ai/code/artifact/ea0e24cf-... | 이전 계정 소유 | **같은 URL로 업데이트 불가.** `Artifact` 도구로 이 폴더의 HTML을 새로 발행 → 새 URL 생성 |
-| **Vercel** big4-report.vercel.app | 이전 계정(devbotsender8282) 소유 | 새 계정으로 `vercel login` 후 **새 프로젝트로 배포**. 아래 5-2 참조 |
-| **GitHub** github.com/jinjo202/big4-review (private) | jinjo202 소유 | 새 계정을 collaborator로 추가하거나, 로컬 폴더에서 새 remote로 push |
+| **아티팩트** | ✅ 2026-08-03 재발행 완료 → https://claude.ai/code/artifact/043883ea-39c9-4047-bd09-fce586a77dfb | 이 URL로 업데이트하려면 `Artifact` 도구에 `url` 파라미터로 넘길 것 (안 넘기면 새 URL 생성됨). 구 URL `ea0e24cf-...`는 이전 계정 소유라 폐기 |
+| **Vercel** big4-report.vercel.app | ✅ 정상 (최신 TSMC 반영본과 내용 일치 확인) | 그대로 사용. 재배포는 5-2 참조 |
+| **GitHub** github.com/jinjo202/big4-review (private) | ✅ 정상 (origin/main = 로컬 HEAD, push 가능) | 그대로 사용 |
 
-로컬 폴더 자체는 OneDrive에 있으므로 파일은 그대로 접근 가능합니다. 위 3개는 "재발행"만 하면 됩니다.
+로컬 폴더 자체는 OneDrive에 있으므로 파일은 그대로 접근 가능합니다. 세 자산 모두 현재 계정에서 접근·갱신 가능한 상태입니다.
 
 ---
 
