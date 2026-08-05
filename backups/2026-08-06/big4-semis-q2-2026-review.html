@@ -250,6 +250,36 @@
     .srow { grid-template-columns: 86px 1fr 76px; }
     table { min-width: 560px; }
   }
+
+  /* ---------- 종목 조회 모달 ---------- */
+  .tkrgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 8px; margin: 16px 0; }
+  .tkr { display: flex; align-items: center; gap: 8px; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 10px 12px; cursor: pointer; font: inherit; font-size: 13.5px; text-align: left; color: var(--ink); transition: border-color .12s, transform .12s; }
+  .tkr:hover { border-color: var(--accent); transform: translateY(-1px); }
+  .tkr:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .tkr .nm2 { font-weight: 700; }
+  .tkr .sym { font-size: 11px; color: var(--muted); margin-left: auto; font-variant-numeric: tabular-nums; }
+  .tkr[data-nodata="1"] { opacity: .5; cursor: not-allowed; }
+
+  .mbg { position: fixed; inset: 0; background: rgba(0,0,0,.5); display: none; z-index: 100; padding: 20px; overflow-y: auto; }
+  .mbg.on { display: block; }
+  .mdl { background: var(--page); border: 1px solid var(--border); border-radius: 10px; max-width: 720px; margin: 0 auto; padding: 22px 24px 26px; box-shadow: 0 12px 40px rgba(0,0,0,.28); }
+  .mdl-h { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 4px; }
+  .mdl-h h3 { margin: 0; font-size: 20px; }
+  .mdl-h .px { font-size: 13px; color: var(--muted); font-weight: 400; margin-left: 6px; }
+  .mdl-x { margin-left: auto; background: none; border: none; font-size: 22px; line-height: 1; cursor: pointer; color: var(--muted); padding: 0 4px; }
+  .mdl-x:hover { color: var(--ink); }
+  .mdl .cap { font-size: 15px; margin: 0 0 12px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+  .mchip { font-size: 12px; background: var(--surface); border: 1px solid var(--border); border-radius: 99px; padding: 4px 11px; }
+  .mchip b { font-variant-numeric: tabular-nums; }
+  .mdl h4 { font-size: 13px; color: var(--accent); margin: 18px 0 6px; letter-spacing: .02em; }
+  .mdl table { font-size: 12.5px; }
+  .mdl td, .mdl th { padding: 6px 8px; }
+  .mdl .dim td { color: var(--muted); }
+  .mdl .srcnote { font-size: 11px; color: var(--muted); margin-top: 14px; line-height: 1.55; }
+  .miss { color: var(--muted); font-style: normal; }
+  @media (max-width: 640px) { .mdl { padding: 18px 14px 20px; } .mdl table { font-size: 11.5px; } }
+  @media print { .mbg { display: none !important; } .tkrgrid { display: none; } }
 </style>
 
 <div class="wrap">
@@ -344,6 +374,18 @@
     <tfoot><tr><td>4사 합산 시총</td><td class="num">—</td><td class="num">$12.16T <span class="note">(₩17,316조)</span></td><td class="num">—</td><td class="num">—</td></tr></tfoot>
   </table></div>
   <p class="note">시총은 2026년 7월 31일 종가 기준, 원화 환산은 서울 외환시장 종가 USD/KRW 1,424원 적용. 알파벳은 A·C 클래스 합산. 참고로 MSFT는 7월 30일 하루에만 시총 약 $450B(₩640조)가 늘었다 — 4사 중 메타 시총의 3분의 1에 해당하는 금액이 하루에 생긴 셈.</p>
+</section>
+
+<section>
+  <h2>종목 조회 — 클릭하면 재무·밸류에이션이 열립니다</h2>
+  <p class="sub">각 카드를 누르면 <strong>시총·PER(후행/선행)·연간 3개년 실적·분기 실적(전년 동기 비교)</strong>이 팝업으로 표시된다. 확보하지 못한 항목은 <span class="miss">미확보</span>로 표시했고 <strong>추정치로 채우지 않았다.</strong></p>
+  <div class="tkrgrid">
+    <button class="tkr" data-k="MSFT" type="button"><span class="dot" style="background:var(--msft)"></span><span class="nm2">마이크로소프트</span><span class="sym">MSFT</span></button>
+    <button class="tkr" data-k="AMZN" type="button"><span class="dot" style="background:var(--amzn)"></span><span class="nm2">아마존</span><span class="sym">AMZN</span></button>
+    <button class="tkr" data-k="GOOGL" type="button"><span class="dot" style="background:var(--googl)"></span><span class="nm2">알파벳</span><span class="sym">GOOGL</span></button>
+    <button class="tkr" data-k="META" type="button"><span class="dot" style="background:var(--meta)"></span><span class="nm2">메타</span><span class="sym">META</span></button>
+    <button class="tkr" data-k="ORCL" type="button"><span class="dot" style="background:var(--bad-text)"></span><span class="nm2">오라클</span><span class="sym">ORCL</span></button>
+  </div>
 </section>
 
 <!-- ================= 1. CapEx ================= -->
@@ -569,6 +611,58 @@
     </div>
     <p class="note">진한 구간이 가이던스 레인지, 옅은 구간은 하단까지의 여백. <b>회색 화살표(↑)는 7월 실적 발표에서 상향되기 전 값</b> — 아마존·알파벳·메타 <b>3사 모두 발표와 함께 올렸다.</b> MSFT의 ~$175B는 내용연수 변경·리스 재분류를 반영한 값으로 실질 지출은 줄지 않았다(§1 참조). 중국 4사는 알리바바·텐센트·바이트댄스·바이두 합산(골드만삭스 추정)으로 <b>미국 5사의 약 1/8</b>이며, 수출통제로 엔비디아 대신 어센드·캠브리콘 등 국산 실리콘에 투자한다 — 규모가 아니라 효율로 싸우는 노선이다.</p>
   </figure>
+
+  <figure>
+    <figcaption>5사 합산 분기 FCF — 26Q2에 거의 제로, 26Q3부터 마이너스</figcaption>
+    <p class="figsub">MSFT·아마존·알파벳·메타·오라클 합산. 붉은 배경 구간은 <strong>추정치</strong>다.</p>
+    <svg viewBox="0 0 720 300" style="width:100%;height:auto" role="img" aria-label="빅테크 5사 합산 분기 잉여현금흐름 추이. 25Q3 +53십억달러에서 26Q2 +3십억달러로 감소한 뒤 26Q3 추정 -13, 26Q4 추정 -28로 마이너스 전환">
+      <rect x="490" y="40" width="200" height="220" fill="var(--bad-text)" opacity="0.07"/>
+      <text x="590" y="56" text-anchor="middle" font-size="11" font-weight="700" fill="var(--bad-text)">추정 구간</text>
+      <g stroke="var(--grid)" stroke-width="1">
+        <line x1="90" y1="50" x2="690" y2="50"/><line x1="90" y1="90" x2="690" y2="90"/><line x1="90" y1="130" x2="690" y2="130"/><line x1="90" y1="210" x2="690" y2="210"/><line x1="90" y1="250" x2="690" y2="250"/>
+      </g>
+      <g fill="var(--muted)" font-size="10" text-anchor="end">
+        <text x="82" y="54">+60</text><text x="82" y="94">+40</text><text x="82" y="134">+20</text><text x="82" y="174">0</text><text x="82" y="214">−20</text><text x="82" y="254">−40</text>
+      </g>
+
+      <rect x="100" y="64" width="72" height="106" rx="2" fill="var(--googl)" opacity="0.8"><title>25Q3 합산 FCF +$53B</title></rect>
+      <rect x="200" y="86" width="72" height="84" rx="2" fill="var(--googl)" opacity="0.8"><title>25Q4 합산 FCF +$42B</title></rect>
+      <rect x="300" y="122" width="72" height="48" rx="2" fill="var(--googl)" opacity="0.8"><title>26Q1 합산 FCF +$24B</title></rect>
+      <rect x="400" y="164" width="72" height="6" rx="2" fill="var(--googl)" opacity="0.8"><title>26Q2 합산 FCF +$3B — 사실상 제로</title></rect>
+      <rect x="500" y="170" width="72" height="26" rx="2" fill="var(--bad-text)" opacity="0.8"><title>26Q3 추정 −$13B — 제로 교차</title></rect>
+      <rect x="600" y="170" width="72" height="56" rx="2" fill="var(--bad-text)" opacity="0.8"><title>26Q4 추정 −$28B</title></rect>
+
+      <line x1="90" y1="170" x2="690" y2="170" stroke="var(--ink)" stroke-width="1.6"/>
+
+      <polyline points="136,64 236,86 336,122 436,164 536,196 636,226" fill="none" stroke="var(--ink)" stroke-width="2.5" stroke-linejoin="round" stroke-dasharray="0"/>
+      <g fill="var(--page)" stroke="var(--ink)" stroke-width="2">
+        <circle cx="136" cy="64" r="4.5"/><circle cx="236" cy="86" r="4.5"/><circle cx="336" cy="122" r="4.5"/><circle cx="436" cy="164" r="4.5"/><circle cx="536" cy="196" r="4.5"/><circle cx="636" cy="226" r="4.5"/>
+      </g>
+      <g font-size="12" font-weight="700" text-anchor="middle" fill="var(--ink)">
+        <text x="136" y="52">+53</text><text x="236" y="74">+42</text><text x="336" y="110">+24</text><text x="436" y="152">+3</text>
+        <text x="536" y="212" fill="var(--bad-text)">−13</text><text x="636" y="242" fill="var(--bad-text)">−28</text>
+      </g>
+      <g fill="var(--muted)" font-size="11" text-anchor="middle">
+        <text x="136" y="278">25Q3</text><text x="236" y="278">25Q4</text><text x="336" y="278">26Q1</text><text x="436" y="278">26Q2</text><text x="536" y="278">26Q3E</text><text x="636" y="278">26Q4E</text>
+      </g>
+      <text x="20" y="120" font-size="11" fill="var(--muted)" transform="rotate(-90 20 120)" text-anchor="middle">분기 FCF ($B)</text>
+    </svg>
+    <p class="note">합산 FCF 추이는 <b>Epoch AI 집계·추정</b> 기준이다. 회사별 분기 분해는 검증된 계열을 확보하지 못해 <b>합산만 표시</b>한다. 아래 표의 개별 수치는 기준이 서로 다르므로(분기/TTM/연간) 이 그래프의 막대와 직접 대응시키면 안 된다.</p>
+  </figure>
+
+  <div class="tblwrap">
+    <table>
+      <thead><tr><th>회사</th><th>최근 FCF</th><th>기준</th></tr></thead>
+      <tbody>
+        <tr><td class="co"><span class="dot" style="background:var(--msft)"></span>MSFT</td><td class="pos"><strong>+$19.6B</strong></td><td class="note">2026년 2분기(FQ4) — <b>분기</b></td></tr>
+        <tr><td class="co"><span class="dot" style="background:var(--meta)"></span>메타</td><td><strong>+$0.78B</strong></td><td class="note">2026년 2분기 — <b>분기</b> · 제로 근접</td></tr>
+        <tr><td class="co"><span class="dot" style="background:var(--googl)"></span>알파벳</td><td class="neg"><strong>−$5.9B</strong></td><td class="note">2026년 2분기 — <b>분기</b> · 상장 이후 사상 첫 적자</td></tr>
+        <tr><td class="co"><span class="dot" style="background:var(--amzn)"></span>아마존</td><td class="neg"><strong>−$7.6B</strong></td><td class="note">2026년 2분기 <b>TTM(후행 12개월)</b> — 분기값 아님</td></tr>
+        <tr><td class="co"><span class="dot" style="background:var(--bad-text)"></span>오라클</td><td class="neg"><strong>−$23.7B</strong></td><td class="note">FY2026 <b>연간 확정</b> — 분기값 아님</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note">⚠ 위 5개 수치는 <b>분기·TTM·연간이 섞여 있어 합산하면 안 된다.</b> 합산 추이는 위 그래프를 볼 것.</p>
 
   <figure>
     <figcaption>FCF 제로 교차 — 언제부터 현금이 마이너스인가</figcaption>
@@ -882,6 +976,21 @@
 
 <div class="tabpanel" id="panel-semis">
 <p class="print-only">PART 2 — 반도체 · 시장 전망</p>
+
+<section>
+  <h2>종목 조회 — 클릭하면 재무·밸류에이션이 열립니다</h2>
+  <p class="sub">엔비디아·마이크론·삼성전자·SK하이닉스는 상세 재무를, 나머지는 요약을 표시한다. 확보하지 못한 항목은 <span class="miss">미확보</span>다.</p>
+  <div class="tkrgrid">
+    <button class="tkr" data-k="NVDA" type="button"><span class="dot" style="background:var(--nvda,var(--googl))"></span><span class="nm2">엔비디아</span><span class="sym">NVDA</span></button>
+    <button class="tkr" data-k="005930" type="button"><span class="dot" style="background:var(--sam,var(--msft))"></span><span class="nm2">삼성전자</span><span class="sym">005930</span></button>
+    <button class="tkr" data-k="000660" type="button"><span class="dot" style="background:var(--hyn,var(--accent))"></span><span class="nm2">SK하이닉스</span><span class="sym">000660</span></button>
+    <button class="tkr" data-k="MU" type="button"><span class="dot" style="background:var(--mu,var(--amzn))"></span><span class="nm2">마이크론</span><span class="sym">MU</span></button>
+    <button class="tkr" data-k="TSM" type="button"><span class="dot" style="background:var(--baseline)"></span><span class="nm2">TSMC</span><span class="sym">2330.TW</span></button>
+    <button class="tkr" data-k="ASML" type="button"><span class="dot" style="background:var(--asml,var(--meta))"></span><span class="nm2">ASML</span><span class="sym">ASML</span></button>
+    <button class="tkr" data-k="SNDK" type="button"><span class="dot" style="background:var(--sndk,var(--up))"></span><span class="nm2">샌디스크</span><span class="sym">SNDK</span></button>
+    <button class="tkr" data-k="KIOX" type="button"><span class="dot" style="background:var(--kio,var(--down))"></span><span class="nm2">키옥시아</span><span class="sym">285A.T</span></button>
+  </div>
+</section>
 
 <section>
   <h2>먼저 — "반도체"라고 부르는 것들의 지도</h2>
@@ -2054,6 +2163,8 @@
 
 </div>
 
+<div class="mbg" id="mbg"><div class="mdl" id="mdlBody"></div></div>
+
 <script>
   var btns = document.querySelectorAll('.tabbtn');
   btns.forEach(function (b) {
@@ -2066,4 +2177,189 @@
       if (window.scrollY > bar.offsetTop) window.scrollTo(0, bar.offsetTop - 8);
     });
   });
+
+/* ================= 종목 조회 모달 ================= */
+var STK = {
+  NVDA: {
+    name:'엔비디아', sym:'NVDA', px:'$206.64', cap:'$5,033.5B <span class="note">(₩7,192조 환산)</span>',
+    asof:'2026-08-03',
+    chips:[['PER(12M Fwd)','16x'],['PSR(T12M)','19.86x'],['매출총이익률(T12M)','74.1%'],['영업이익률(T12M)','64%'],['최신분기 매출 YoY','+85.2%']],
+    aCols:['2024','2025','2026'],
+    aRows:[['매출',['$60.9B','$130.5B','$215.9B']],['매출총이익',['$44.3B','$97.9B','$153.5B']],['영업이익',['$33.0B','$81.5B','$130.4B']],['순이익',['$29.8B','$72.9B','$120.1B']]],
+    aDim:[['매출총이익률(GPM)',['72.7%','75.0%','71.1%']],['영업이익률(OPM)',['54.1%','62.4%','60.4%']]],
+    per:[['2024','168.9x'],['2025','69.0x'],['2026','41.9x']],
+    fwd:'16x',
+    qCols:['25.2Q','25.3Q','25.4Q','26.1Q','26.2Q'],
+    qRows:[['매출',['$44.1B','$46.7B','$57.0B','$68.1B','$81.6B'],'+85%'],['매출총이익',['$26.7B','$33.9B','$41.8B','$51.1B','$61.2B'],'+129%'],['영업이익',['$21.6B','$28.4B','$36.0B','$44.3B','$53.5B'],'+147%'],['순이익',['$18.8B','$26.4B','$31.9B','$43.0B','$58.3B'],'+211%']],
+    qDim:[['영업이익률(OPM)',['49.1%','60.8%','63.2%','65.0%','65.6%'],'']],
+    src:'야후 파이낸스(2026-08-03) · 주식수 24,359M(근사) · PER=12M forward(야후 애널리스트 컨센서스) · PSR/GPM/OPM=후행 T12M'
+  },
+  MSFT: {
+    name:'마이크로소프트', sym:'MSFT', cap:'$3.45T <span class="note">(₩4,913조)</span>', asof:'2026-07-31',
+    chips:[['PER(후행)','27.5x'],['PER(선행)','25.1x'],['FY2028 컨센 기준','20x'],['2Q26 FCF','+$19.6B']],
+    note:'6월 종료 회계연도. FY2026 = 2025년 7월~2026년 6월.',
+    aCols:['FY2024','FY2025','FY2026'],
+    aRows:[['매출',['$245.1B','$281.7B','$331.8B']],['영업이익',['$109.4B','$128.5B','$155.2B']],['순이익',['$88.1B',null,'$133.7B']]],
+    aDim:[['매출 YoY',['+16%','+15%','+18%']],['영업이익 YoY',['+24%','+17%','+21%']]],
+    per:[['FY2024','39.2x'],['FY2025',null],['FY2026','25.8x']],
+    fwd:'25.1x',
+    qCols:['FQ4 2026 (4~6월)'],
+    qRows:[['매출',['$90.0B'],'+18%'],['영업이익',['$40.6B'],'+18%'],['순이익',['$35.8B'],'+31%'],['EPS(희석)',['$4.81'],'+32%']],
+    qDim:[['Azure 성장률',['+43%'],''],['Microsoft Cloud',['$59.3B'],'+27%'],['컨센서스 EPS',['$4.21'],'상회']],
+    src:'회사 실적 발표(FY26 Q4, 2026-07-29) · 배수는 7월 말~8월 초 관측치로 항목별 기준일 상이 · FY2025 순이익 미확보'
+  },
+  GOOGL: {
+    name:'알파벳', sym:'GOOGL', cap:'$4.36T <span class="note">(₩6,209조)</span>', asof:'2026-07-31',
+    chips:[['PER(후행)','16.8x'],['5년 평균 PER','25.3x'],['2Q26 FCF','−$5.9B'],['백로그','$514B']],
+    note:'후행 PER 16.8배는 2Q26의 대규모 <b>비영업 평가익</b>이 순이익을 부풀린 결과가 섞여 있어, 영업이익 기준으로는 이보다 비싸다.',
+    aCols:['2024','2025','2026 상반기'],
+    aRows:[['매출',['$350.0B','$402.8B','$229.7B']],['영업이익',['$112.4B','$129.0B','$80.5B']],['순이익',['$100.1B','$132.2B','$174.7B']]],
+    aDim:[['순이익 비고',['','','평가익 포함 — 코어 아님']]],
+    per:[['2024','43.6x'],['2025','33.0x'],['2026',null]],
+    fwd:null,
+    qCols:['26.1Q','26.2Q'],
+    qRows:[['매출',['$109.9B','$119.8B'],'+24%'],['영업이익',['$39.7B','$40.8B'],'+30%'],['순이익',['$62.6B','$112.1B'],'+298%']],
+    qDim:[['구글 클라우드',['','$24.8B'],'+82%'],['클라우드 영업이익',['','$8.8B'],'2Q25 $2.8B'],['분기 CapEx',['$35.7B','$44.9B'],'']],
+    src:'회사 실적 발표(2026-07-22) · 2026 상반기는 1Q+2Q 합산 · 익일 주가는 −7.1%와 −1.2% 두 기록이 병존(§22 참조)'
+  },
+  AMZN: {
+    name:'아마존', sym:'AMZN', cap:'$2.93T <span class="note">(₩4,172조)</span>', asof:'2026-07-31',
+    chips:[['PER(후행)','21.6x'],['5년 평균 PER','63.0x'],['평균 목표가','$296.12'],['2Q26 FCF(TTM)','−$7.6B']],
+    aCols:['2024','2025','2026 2Q까지'],
+    aRows:[['매출',['$638B','~$717B',null]],['영업이익',['$68.6B','$80.0B',null]],['순이익',[null,'$77.7B',null]]],
+    aDim:[['FCF',['','','2022 −$29.5B → 2023 +$33.0B → 2024 +$59.9B → 2025 −$7.2B']]],
+    per:[['2024',null],['2025','37.7x'],['2026',null]],
+    fwd:null,
+    qCols:['26.2Q','3Q26 가이던스'],
+    qRows:[['매출',['$200.6B','$197~202B'],'+20%'],['영업이익',['$27.5B','$22.5~26.5B'],'+43%']],
+    qDim:[['AWS 성장률',['+37%',''],'2021년 이후 최고'],['AWS 영업이익',['$16.6B',''],'마진 39.4%'],['컨센서스 EPS',['$1.81',''],'']],
+    src:'회사 실적 발표(2026-07-31) · FCF는 출처별 정의(리스 상환 포함 여부) 차이가 커 절대값보다 부호 전환으로 읽을 것'
+  },
+  META: {
+    name:'메타', sym:'META', cap:'$1.42T <span class="note">(₩2,022조)</span>', asof:'2026-07-31',
+    chips:[['PER(후행)','21.6x'],['PER(선행)','18.4x'],['5년 평균 PER','26.6x'],['2Q26 FCF','+$0.78B']],
+    note:'FY2027 컨센서스 PER이 작년 21배 → 올해 18배로 하락 — <b>주가가 빠져서가 아니라 이익 추정치가 올라가서</b>인 부분이 크다.',
+    aCols:['2024','2025'],
+    aRows:[['매출',['$201.0B',null]],['영업이익',['$69.4B',null]],['순이익',['$62.4B','$60.5B']]],
+    aDim:[['매출 YoY',['+22.2%',null]],['순이익 YoY',['+59.5%','−3.1%']]],
+    per:[['2024','22.8x'],['2025','23.5x']],
+    fwd:'18.4x',
+    qCols:['26.2Q'],
+    qRows:[['매출',['$60.8B'],'+28%'],['광고 매출',['$59.4B'],'+27%'],['총비용',['$42B'],'+55%'],['순이익',['$15.8B'],''],['EPS',['$6.18'],'']],
+    qDim:[['AI 인프라 지출',['$31B'],''],['컨센서스 EPS',['$7.13~7.23'],'하회'],['외부 컴퓨트 판매',['Anthropic 월 $1.25B · 구글 월 $0.92B'],'']],
+    src:'회사 실적 발표(2026-07-29) · 2025년 매출·영업이익은 신뢰할 출처를 확보하지 못해 공란 · EPS 컨센 하회가 익일 약 −9%의 직접 원인'
+  },
+  '005930': {
+    name:'삼성전자', sym:'005930.KS', cap:'₩1,511조 <span class="note">(보통주 · 우선주 포함 ₩1,669조)</span>', asof:'2026-07-31',
+    chips:[['PBR','2.58x'],['6년 평균 PBR','1.54x'],['PER(후행)','30.1x'],['12M선행 PER','9.84x']],
+    note:'배수는 삼성 149,300원 시점의 언론 인용치로 <b>7월 31일 기준이 아니다</b>(§17 참조).',
+    aCols:['2024','2025','2026 상반기'],
+    aRows:[['영업이익(전사)',['32.7조','43.6조','146.7조']]],
+    aDim:[['DS부문 영업이익',['','','2023년 −14.9조 적자 → 회복']]],
+    per:null, fwd:null,
+    qCols:['26.2Q'],
+    qRows:[['매출',['171.5조'],''],['영업이익',['89.5조'],''],['EPS',['10,849원'],'+52% QoQ']],
+    qDim:[['영업이익률',['52%'],'DS부문 약 70%'],['발표일 주가',['−6.9%'],'시세 기준 −5.2%']],
+    src:'회사 공시 · 2024~26년 DS부문 별도 영업이익은 출처 편차가 커 전사 기준만 표기'
+  },
+  '000660': {
+    name:'SK하이닉스', sym:'000660.KS', cap:'₩1,255조', asof:'2026-07-31',
+    chips:[['PBR','7.12x'],['6년 평균 PBR','1.84x'],['12M선행 PER','7.27x'],['2018 고점 PBR','1.9x']],
+    note:'PBR 7.12배는 <b>2018년 사이클 고점(1.9배)의 3.7배</b>다. 리레이팅 논쟁의 진원지 — §17~§19 참조.',
+    aCols:['2024','2025','2026 상반기'],
+    aRows:[['영업이익',['23.5조','47.2조','98.2조']]],
+    aDim:[['사이클 저점',['','','2016 +3.3조 · 2019 +2.7조 · 2023 −7.7조 적자']]],
+    per:null, fwd:null,
+    qCols:['26.2Q'],
+    qRows:[['매출',['79.3조'],''],['영업이익',['60.5조'],''],['순이익',['93.9조'],'평가익 포함 가능성']],
+    qDim:[['영업이익률',['76%'],''],['HBM 점유율',['58~62%'],'1Q25 69%에서 하락'],['발표일 주가',['−9.6%'],'사상 최대 실적에도 하락']],
+    src:'회사 공시 · HBM 점유율은 출처·분기에 따라 58%(1Q26)와 62%(2Q26)가 병존'
+  },
+  MU: {
+    name:'마이크론', sym:'MU', cap:'$929.5B', asof:'2026-07-31',
+    chips:[['최신분기 영업이익률','81.2%'],['HBM 2026 물량','전량 계약 소진'],['SCA','16~17건'],['FY26 CapEx','$20B']],
+    note:'8~9월 종료 회계연도. 모건스탠리·골드만은 FY26 CapEx $20B를 <b>사이클 정점 신호</b>로 지목한다.',
+    aCols:['FY2024','FY2025','FY2026 2개 분기'],
+    aRows:[['영업이익',['$1.3B','$9.8B','$50.2B']]],
+    aDim:[['과거 사이클',['','','FY18 정점 $15.0B → FY19 $7.4B → FY20 $2.4B']]],
+    per:null, fwd:null,
+    qCols:['FQ3 (26.3~5월)'],
+    qRows:[['매출',['$41.46B'],''],['영업이익',['$33.7B'],'']],
+    qDim:[['영업이익률',['81.2%'],''],['발표일 주가',['+15%'],'']],
+    src:'회사 실적 발표 · FY2018 정점과의 비교는 §13·§17 참조'
+  }
+};
+var STK_LITE = {
+  TSM:['TSMC','$1.95T (₩2,777조) · 대만 본토(2330.TW) 기준','파운드리 점유율 <b>72.3%</b>(1Q26, 삼성 6.5%) · FY26 CapEx $52~56B → <b>$60~64B 상향</b> · YTD +56.5% · 상세 재무는 미확보'],
+  ASML:['ASML','$633.6B','2Q26 매출 €9.33B · 매출총이익률 54% · 발표일 약 −3.3% · 2026년 1분기부터 분기 수주 공시 중단 · 상세 재무는 미확보'],
+  SNDK:['샌디스크','$179.9B','최신분기(2~4월) 매출 $5.95B · 영업이익 $4.11B · 마진 69.1% · 발표일 +8.3% · 연간 영업이익 FY24 −$0.47B → FY25 −$1.38B → 9개월 +$5.35B · <b>6월 분기 실적은 8/5 발표 예정</b>'],
+  KIOX:['키옥시아','$161.9B','최신분기 매출 ¥1,767B · 영업이익 ¥1,326B(non-GAAP) · 마진 75% · 발표일 +17.7% · 연간 ¥453B → ¥876B → 1분기 ¥1,326B · GAAP/non-GAAP 기준 혼재'],
+  ORCL:['오라클','미확보','FY26 FCF <b>−$23.7B 확정</b> · 신용등급 <b>BBB−로 강등</b>(AI 지출이 직접 사유) · 채권 $18B 발행(’25.9) · 백로그 폭증하나 카운터파티가 OpenAI류에 집중 · 상세 재무는 미확보']
+};
+
+function stkTable(cols, rows, dim, yoyHead) {
+  var h = '<div class="tblwrap"><table><thead><tr><th></th>';
+  cols.forEach(function (c) { h += '<th>' + c + '</th>'; });
+  if (yoyHead) h += '<th>YoY(최신)</th>';
+  h += '</tr></thead><tbody>';
+  rows.forEach(function (r) {
+    h += '<tr><td class="co">' + r[0] + '</td>';
+    r[1].forEach(function (v) { h += '<td>' + (v === null ? '<span class="miss">미확보</span>' : '<b>' + v + '</b>') + '</td>'; });
+    if (yoyHead) h += '<td class="pos">' + (r[2] || '') + '</td>';
+    h += '</tr>';
+  });
+  (dim || []).forEach(function (r) {
+    h += '<tr class="dim"><td class="co">' + r[0] + '</td>';
+    r[1].forEach(function (v) { h += '<td>' + (v === null ? '<span class="miss">미확보</span>' : v) + '</td>'; });
+    if (yoyHead) h += '<td>' + (r[2] || '') + '</td>';
+    h += '</tr>';
+  });
+  return h + '</tbody></table></div>';
+}
+
+function openStk(key) {
+  var d = STK[key];
+  if (!d) {
+    var l = STK_LITE[key];
+    if (!l) return;
+    document.getElementById('mdlBody').innerHTML =
+      '<div class="mdl-h"><h3>' + l[0] + '<span class="px">' + key + '</span></h3>' +
+      '<button class="mdl-x" onclick="closeStk()" aria-label="닫기">&times;</button></div>' +
+      '<p class="cap">시총 <b>' + l[1] + '</b></p><p style="font-size:13.5px">' + l[2] + '</p>' +
+      '<p class="srcnote">이 종목은 3개년·5분기 상세 재무를 확보하지 못해 요약만 표시한다. 리포트 본문 §8에 실적 상세가 있다.</p>';
+    document.getElementById('mbg').classList.add('on');
+    return;
+  }
+  var h = '<div class="mdl-h"><h3>' + d.name + '<span class="px">' + d.sym + (d.px ? ' · ' + d.px : '') + '</span></h3>' +
+          '<button class="mdl-x" onclick="closeStk()" aria-label="닫기">&times;</button></div>';
+  h += '<p class="cap">시총 <b>' + d.cap + '</b> <span class="note">· ' + d.asof + ' 기준</span></p>';
+  h += '<div class="chips">';
+  d.chips.forEach(function (c) { h += '<span class="mchip">' + c[0] + ' <b>' + c[1] + '</b></span>'; });
+  h += '</div>';
+  if (d.note) h += '<div class="callout" style="margin:0 0 16px;font-size:13px">' + d.note + '</div>';
+
+  h += '<h4>연간 실적 (최근 3개년)</h4>' + stkTable(d.aCols, d.aRows, d.aDim, false);
+
+  if (d.per) {
+    h += '<h4>밸류에이션 배수</h4><div class="tblwrap"><table><thead><tr><th>기준</th><th>배수</th><th>의미</th></tr></thead><tbody>';
+    d.per.forEach(function (p) {
+      h += '<tr><td class="co">' + p[0] + ' 순이익</td><td>' + (p[1] === null ? '<span class="miss">미확보</span>' : '<b>' + p[1] + '</b>') + '</td><td class="note">현재 시총 ÷ 해당 연도 순이익</td></tr>';
+    });
+    if (d.fwd) h += '<tr><td class="co">12개월 선행</td><td><b>' + d.fwd + '</b></td><td class="note">애널리스트 컨센서스 기준 <b>forward PER</b></td></tr>';
+    h += '</tbody></table></div><p class="note"><b>주의: 위 연도별 배수는 "그 시점의 PER"이 아니다.</b> 현재 시총을 각 연도 순이익으로 나눈 값으로, 이익이 커질수록 배수가 내려가는 구조다. 당시 주가 기준 실제 PER과는 다르다.</p>';
+  }
+
+  if (d.qCols) h += '<h4>분기 실적' + (d.qRows[0] && d.qRows[0][2] ? ' (전년 동기 비교 포함)' : '') + '</h4>' + stkTable(d.qCols, d.qRows, d.qDim, !!(d.qRows[0] && d.qRows[0][2]));
+
+  h += '<p class="srcnote">' + d.src + ' · 본 자료는 리서치 요약이며 투자 권유가 아님.</p>';
+  document.getElementById('mdlBody').innerHTML = h;
+  document.getElementById('mbg').classList.add('on');
+}
+function closeStk() { document.getElementById('mbg').classList.remove('on'); }
+document.addEventListener('click', function (e) {
+  var t = e.target.closest ? e.target.closest('.tkr') : null;
+  if (t && t.dataset.k) openStk(t.dataset.k);
+  if (e.target.id === 'mbg') closeStk();
+});
+document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeStk(); });
 </script>
