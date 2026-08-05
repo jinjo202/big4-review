@@ -1,6 +1,6 @@
 ﻿# 인수인계서 — 2026 2Q 빅테크·반도체 실적 리뷰
 
-**최종 갱신**: 2026-08-05 (자금 지도·FCF 제로교차 차트, §22 외부 자료 대조 검증) · **작성 계정**: devbotsender8282@gmail.com
+**최종 갱신**: 2026-08-06 (Vercel 자동배포 정상화 — 커밋 작성자 문제 해결) · **작성 계정**: devbotsender8282@gmail.com
 **이 문서 하나만 읽으면 이어서 작업할 수 있게 작성됨.**
 
 ---
@@ -20,7 +20,7 @@ git log --oneline -5
 
 | 자산 | 상태 | 새 계정에서 할 일 |
 |---|---|---|
-| **아티팩트** | ✅ 2026-08-03 재발행 완료 → https://claude.ai/code/artifact/043883ea-39c9-4047-bd09-fce586a77dfb | 이 URL로 업데이트하려면 `Artifact` 도구에 `url` 파라미터로 넘길 것 (안 넘기면 새 URL 생성됨). 구 URL `ea0e24cf-...`는 이전 계정 소유라 폐기 |
+| **아티팩트** | ✅ 재발행 완료(2026-08-03 최초, 이후 계속 갱신) → https://claude.ai/code/artifact/043883ea-39c9-4047-bd09-fce586a77dfb | 이 URL로 업데이트하려면 `Artifact` 도구에 `url` 파라미터로 넘길 것 (안 넘기면 새 URL 생성됨). 구 URL `ea0e24cf-...`는 이전 계정 소유라 폐기 |
 | **Vercel** | ✅ **2026-08-05 jinjo202 자체 계정으로 이전 완료** → https://big4-review-wf1f.vercel.app | 신규 프로젝트, GitHub(jinjo202)과 **네이티브 연동** — `git push`만 하면 자동 배포. 계정 불일치 문제가 원천 해결됨. 구 URL `big4-report.vercel.app`(devbotsender8282 소유)은 더 이상 관리 안 함 |
 | **GitHub** github.com/jinjo202/big4-review (private) | ✅ 정상 (origin/main = 로컬 HEAD, push 가능) | 그대로 사용 |
 
@@ -153,26 +153,58 @@ x = 100 + (2017년 1월부터의 개월 수) × 16.67
 Copy-Item "big4-semis-q2-2026-review.html" "index.html" -Force
 ```
 
-### 5-2. Vercel 배포 (2026-08-05~ — jinjo202 자체 계정, 네이티브 Git 연동)
+### 5-2. Vercel 배포 (2026-08-06~ · jinjo202 계정 · git push 자동배포 **작동 확인됨**)
 
-현재 배포처: **https://big4-review-wf1f.vercel.app**
-
-**이제 CLI 명령이 필요 없다.** 저장소 소유자(jinjo202)와 Vercel 계정(jinjo202)이 같은 사람이라 5-2-1/5-2-2에서 겪은 계정 불일치 문제 자체가 없다. `main`에 push하면 Vercel이 GitHub 웹훅으로 자동 감지해 배포한다.
+배포처: **https://big4-review.vercel.app** (= https://big4-review-wf1f.vercel.app — 같은 프로젝트의 두 별칭, 내용 동일)
+Vercel 스코프: `jinjo202-8902s-projects` · 저장소와 **네이티브 Git 연동**
 
 ```bash
 git add -A && git commit -m "메시지" && git push
 ```
 
-30초~1분 뒤 배포 완료. 검증:
-```powershell
-(Invoke-WebRequest "https://big4-review-wf1f.vercel.app" -UseBasicParsing).Content -match '주가 스코어보드'
+1분 내 자동 배포된다. 검증(캐시 우회):
+
+```bash
+curl -s "https://big4-review.vercel.app?cb=$(date +%s)" | wc -c
 ```
 
-**⚠️ 이 컴퓨터의 로컬 Vercel CLI는 이 프로젝트를 배포할 수 없다.** CLI 세션(`%APPDATA%\xdg.data\com.vercel.cli\auth.json`)은 여전히 예전 계정 `devbotsender8282`로 로그인돼 있고, 새 프로젝트는 jinjo202 계정 소유라 별개의 토큰이 필요하다. **git push만으로 자동 배포되니 평소엔 문제 없음.** CLI로 직접 배포해야 할 일이 생기면 `vercel login`으로 jinjo202 계정 재로그인이 먼저 필요하다.
+로컬 `index.html` 바이트 수와 일치하면 성공.
 
-**⚠️ URL이 `big4-review.vercel.app`이 아니라 `-wf1f` 접미사가 붙은 이유**: Vercel Hobby(개인) 계정은 프로젝트명이 비어있어도 스쿼팅 방지 등의 이유로 임의 접미사를 붙이는 경우가 있다. 깨끗한 URL을 원하면 Vercel 대시보드 → 프로젝트 → Settings → Domains에서 `big4-review.vercel.app` 별칭을 수동으로 추가할 수 있다(브라우저 로그인 필요, 이 세션에서 확인한 시점엔 비어 있었음).
+#### ⚠️⚠️ 커밋 작성자를 절대 바꾸지 말 것 — 배포의 전제조건이다
 
-**과거 기록 (5-2-1, 5-2-2)**: 이전 계정(devbotsender8282) 소유 프로젝트 `big4-report`에서 겪은 배포 차단(BLOCKED) 문제와 그 우회 방법. **그 프로젝트/URL은 더 이상 관리하지 않는다.** 계정을 jinjo202로 옮기면서 문제 자체가 사라졌지만, 진단 방식(API로 `readyStateReason` 직접 조회하는 법)은 향후 비슷한 계정 불일치 상황에서 참고할 가치가 있어 남겨둔다.
+이 저장소에는 **이 저장소에만 적용되는(`--local`) git 작성자**가 설정돼 있다:
+
+| 항목 | 값 |
+|---|---|
+| `user.name` | `jinjo202` |
+| `user.email` | `285509946+jinjo202@users.noreply.github.com` |
+
+전역 설정(`ocarr@users.noreply.github.com`)은 **건드리지 않았고** 이 저장소에서만 덮어쓴 것이다. 다른 프로젝트에는 영향이 없다.
+
+**이유**: Vercel은 Git 연동 배포에서 **커밋 작성자가 Vercel 계정 소유자인지 검사**한다. 작성자가 `ocarr`이면 모든 배포가 `Deployment was blocked`로 실패한다. 계정을 jinjo202로 옮긴 뒤에도 **작성자가 그대로여서 4번의 푸시가 연속 실패**했고, 작성자를 바꾼 첫 커밋에서 **즉시 성공**했다.
+
+되돌리면 배포가 다시 깨진다:
+
+```bash
+git config --local --unset user.name
+git config --local --unset user.email
+```
+
+#### 배포 실패 시 진단 — Vercel 토큰 없이 GitHub API로 가능
+
+```bash
+gh api repos/jinjo202/big4-review/commits/<sha>/status --jq '.statuses[] | "\(.context): \(.state) — \(.description)"'
+```
+
+`Deployment was blocked`가 나오면 십중팔구 커밋 작성자 문제다. 저장소의 배포 이력 전체는:
+
+```bash
+gh api repos/jinjo202/big4-review/deployments --jq '.[] | "\(.created_at)  \(.environment)"'
+```
+
+#### 로컬에 `.vercel/`을 만들지 말 것
+
+2026-08-06에 제거했다. 폐기된 구 프로젝트(`big4-report`, devbotsender8282 계정)를 가리키고 있어서, 그 상태로 `vercel deploy`를 하면 **엉뚱한 죽은 프로젝트에 올라간다**. 이 컴퓨터의 Vercel CLI는 아직 구 계정으로 로그인돼 있으므로 **CLI 배포는 쓰지 말고 `git push`만 쓸 것.**
 
 ### 5-2-1. (참고용, 해결됨) `BLOCKED` 배포의 진짜 원인 — 구 계정 devbotsender8282 한정
 
@@ -247,7 +279,7 @@ git add -A && git commit -m "메시지" && git push
 저장소: https://github.com/jinjo202/big4-review (**private**). 현재 계정에서 push 정상 동작 확인됨(2026-08-03).
 
 ### 5-5. 카카오톡 전송
-카카오 MCP의 `KakaotalkChat-MemoChat` 도구 사용("나에게 보내기", **200자 제한**).
+카카오 MCP의 `KakaotalkChat-MemoChat` 도구 사용("나에게 보내기", **200자 제한**). ⚠️ **커넥터는 세션 시작 시점에 고정된다** — 세션 도중에 연결하면 그 대화에서는 안 잡히므로 새 세션을 열어야 한다. 실제로 이 프로젝트에서 두 번 겪었다.
 
 ---
 
@@ -418,7 +450,10 @@ TSMC 월별 지수(본토): 100 → 114.5 → 128.7 → 113.5 → 137.7 → 151.
 | PDF 한글 깨짐 | doctype+charset 래퍼를 씌운 임시 파일로 인쇄 |
 | **PDF가 조용히 갱신 안 됨** | `& $edge ...`는 파일 쓰기 전에 반환됨. `Start-Process -Wait` 필수 (5-3 참조). 크기·타임스탬프로 검증 |
 | **Edge headless exit 13** | 실행 중인 Edge가 기본 프로필 잠금. `--user-data-dir`을 임시 폴더로 지정 |
-| **`vercel deploy`가 프로젝트명 400 에러** | `.vercel/`이 사라진 상태. 폴더명 "big4 review"의 공백 때문에 새 프로젝트 생성이 거부됨. `vercel link --project big4-report --scope ...`로 재링크 (5-2 참조) |
+| **`vercel deploy`가 프로젝트명 400 에러** | 폴더명 "big4 review"의 공백 때문에 새 프로젝트 생성이 거부되는 것. **이제 CLI 배포는 안 쓴다 — `git push`만 쓸 것** (5-2) |
+| **Vercel 배포가 `Deployment was blocked`** | **커밋 작성자가 Vercel 계정 소유자와 달라서.** 이 저장소는 `--local` git 작성자를 jinjo202로 고정해 해결했다. 절대 되돌리지 말 것 (5-2) |
+| 배포 실패 원인을 Vercel 토큰 없이 알아내기 | `gh api repos/jinjo202/big4-review/commits/<sha>/status` — GitHub이 Vercel 상태를 그대로 중계한다 |
+| **python 인라인 스크립트를 bash 히어독 없이 실행** | 문자열 안의 백틱을 bash가 명령으로 실행해 **문서가 손상되고 `vercel deploy`까지 실행됐다.** 긴 텍스트는 `Write` 도구로 파일에 쓴 뒤 읽어 쓸 것 |
 | `Read`로 PDF 확인 불가 | pdftoppm 미설치. PDF 시각 검증은 불가하니 HTML 렌더링으로 대신 확인 |
 | 브라우저 `navigate` 타임아웃 | 이 환경의 Browser pane이 불안정. 렌더링 검증은 배포 후 `Invoke-WebRequest`로 문자열 매칭 |
 | 차트에 종목 추가 후 비율 깨짐 | 최대값 기준 `width:%`를 **전부** 재계산해야 함 (4-1 참조) |
