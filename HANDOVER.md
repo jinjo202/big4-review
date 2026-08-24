@@ -22,7 +22,7 @@ git log --oneline -5
 |---|---|---|
 | **아티팩트** | ✅ 재발행 완료(2026-08-03 최초, 이후 계속 갱신) → https://claude.ai/code/artifact/043883ea-39c9-4047-bd09-fce586a77dfb | 이 URL로 업데이트하려면 `Artifact` 도구에 `url` 파라미터로 넘길 것 (안 넘기면 새 URL 생성됨). 구 URL `ea0e24cf-...`는 이전 계정 소유라 폐기 |
 | **Vercel** | ✅ **2026-08-05 jinjo202 자체 계정으로 이전 완료** → https://big4-review-wf1f.vercel.app | 신규 프로젝트, GitHub(jinjo202)과 **네이티브 연동** — `git push`만 하면 자동 배포. 계정 불일치 문제가 원천 해결됨. 구 URL `big4-report.vercel.app`(devbotsender8282 소유)은 더 이상 관리 안 함 |
-| **GitHub** github.com/jinjo202/big4-review (private) | ✅ 정상 (origin/main = 로컬 HEAD, push 가능) | 그대로 사용 |
+| **GitHub** github.com/jinjo202/big4-review (**public**, 2026-08-24부터) | ✅ 정상 | 아래 "GitHub Actions 결제 차단" 항목 필독 |
 
 로컬 폴더 자체는 OneDrive에 있으므로 파일은 그대로 접근 가능합니다. **세 자산 모두 jinjo202 계정 기준으로 정상 동작합니다.**
 
@@ -558,6 +558,7 @@ TSMC 월별 지수(본토): 100 → 114.5 → 128.7 → 113.5 → 137.7 → 151.
 | **Vercel 배포가 `Deployment was blocked`** | **커밋 작성자가 Vercel 계정 소유자와 달라서.** 이 저장소는 `--local` git 작성자를 jinjo202로 고정해 해결했다. 절대 되돌리지 말 것 (5-2) |
 | 배포 실패 원인을 Vercel 토큰 없이 알아내기 | `gh api repos/jinjo202/big4-review/commits/<sha>/status` — GitHub이 Vercel 상태를 그대로 중계한다 |
 | **python 인라인 스크립트를 bash 히어독 없이 실행** | 문자열 안의 백틱을 bash가 명령으로 실행해 **문서가 손상되고 `vercel deploy`까지 실행됐다.** 긴 텍스트는 `Write` 도구로 파일에 쓴 뒤 읽어 쓸 것 |
+| **⭐ 시세 워크플로(`prices.yml`)가 매일 2~5초 만에 조용히 실패, Vercel이 안 갱신됨 (2026-08-11~08-24, 13일간)** | Vercel 문제가 **아니었다** — `gh run view <id>`의 ANNOTATIONS에 `"The job was not started because recent account payments have failed or your spending limit needs to be increased"`. **GitHub Actions 결제/지출 한도 차단.** 실행 시간이 3~5초로 비정상적으로 짧으면(정상은 1분대) 이 문제부터 의심할 것. **해결**: `gh repo edit jinjo202/big4-review --visibility public --accept-visibility-change-consequences` — 공개 저장소는 GitHub 표준 러너 사용 시 과금 대상이 아니라 이 차단을 완전히 우회한다. 전환 전 `git log --all -p \| grep -iE 'token\|secret\|password'`로 이력에 비밀값이 없는지 확인했음(있던 건 `${{ secrets.VERCEL_TOKEN }}` 같은 **참조**뿐, 실값 아님). **되돌리려면**(다시 private으로) GitHub 결제 설정에서 Actions 지출 한도를 올려야 하며, 안 올리면 private 전환 즉시 이 문제가 재발한다 |
 | `Read`로 PDF 확인 불가 | pdftoppm 미설치. PDF 시각 검증은 불가하니 HTML 렌더링으로 대신 확인 |
 | 브라우저 `navigate` 타임아웃 | 이 환경의 Browser pane이 불안정. 렌더링 검증은 배포 후 `Invoke-WebRequest`로 문자열 매칭 |
 | 차트에 종목 추가 후 비율 깨짐 | 최대값 기준 `width:%`를 **전부** 재계산해야 함 (4-1 참조) |
